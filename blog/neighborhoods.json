@@ -1,0 +1,174 @@
+{
+  "_comment": "Neighborhood pages data. Add new ones here; neighborhood.html picks them up automatically.",
+  "neighborhoods": {
+    "encinitas": {
+      "name": "Encinitas",
+      "zip": "92024",
+      "tag": "The coastal home base",
+      "hero": "coast-aerial.jpg",
+      "lede": "If you're picking one coastal San Diego town to plant a flag in, Encinitas is the smartest bet. Five distinct pockets, the best school district north of La Jolla, and a 101 strip that still feels like a town and not a mall.",
+      "vibe": "Coastal, layered, genuinely mixed. A surf town in Leucadia, a village in Cardiff, a walkable downtown in Old Encinitas, a family belt in New Encinitas, and acreage in Olivenhain — all under one zip code.",
+      "priceRange": "$1.5M – $6M+",
+      "typicalDom": "14–28 days",
+      "bestFor": ["Families chasing top public schools", "Remote workers who want a walkable coffee culture", "Surfers who want to walk to the water", "Downsizers trading inland square footage for coast"],
+      "streetsToKnow": [
+        { "name": "Neptune Ave", "why": "Oceanfront bluff road, trophy addresses, walking distance to Beacon's and Stone Steps" },
+        { "name": "Hermes Ave", "why": "Classic Leucadia bungalow grid, one block inland from the coast" },
+        { "name": "San Elijo Ave", "why": "Cardiff village spine, walk-to-everything, Composer streets just behind it" },
+        { "name": "Rancho Santa Fe Rd (Olivenhain)", "why": "Half-acre-plus lots, horse trails, top-ranked elementary feeders" }
+      ],
+      "relatedPosts": [
+        "olivenhain-92024-neighborhood-guide",
+        "leucadia-vs-cardiff-which-is-right-for-you",
+        "old-encinitas-vs-new-encinitas",
+        "encinitas-92024-school-boundary-guide",
+        "encinitas-closing-costs-92024"
+      ]
+    },
+    "cardiff": {
+      "name": "Cardiff-by-the-Sea",
+      "zip": "92007",
+      "tag": "Village on the bluff",
+      "hero": "home-modern.jpg",
+      "lede": "A mile of coast, lagoon trails out the back door, and genuinely walkable village life. Cardiff is the Encinitas pocket people don't want to leave once they find it.",
+      "vibe": "Village, not town. Sit-down dinners, San Elijo Lagoon trails, a slightly older and more settled crowd. The Composer streets (Liszt, Mozart, Verdi) are the heart of it.",
+      "priceRange": "$1.8M – $5.5M",
+      "typicalDom": "11–21 days",
+      "bestFor": ["Families wanting Cardiff School District", "Empty-nesters who want walkability", "Buyers who prefer the village over the surf-town vibe"],
+      "streetsToKnow": [
+        { "name": "Liszt Ave", "why": "Composer streets, Cardiff School District, quiet and tight-knit" },
+        { "name": "San Elijo Ave", "why": "The village spine — walk to coffee, dinner, the lagoon" },
+        { "name": "Cardiff Cove walk-streets", "why": "Walk to Seaside Reef in under five minutes, commands a real premium" }
+      ],
+      "relatedPosts": [
+        "leucadia-vs-cardiff-which-is-right-for-you",
+        "encinitas-92024-school-boundary-guide",
+        "coastal-home-inspection-what-to-watch-for"
+      ]
+    },
+    "leucadia": {
+      "name": "Leucadia",
+      "zip": "92024",
+      "tag": "Surf-town Encinitas",
+      "hero": "surfer.jpg",
+      "lede": "Bungalows, taco shops, morning offshores, and the kind of street grid where every block has a different conversation. Leucadia is the laid-back, walkable surf-town chapter of Encinitas.",
+      "vibe": "Barefoot, a little scruffy in the best way, creatively mixed. 1940s cottages next to ADUs next to gleaming new builds. If your weekend involves a board, this is home.",
+      "priceRange": "$1.5M – $4.5M",
+      "typicalDom": "12–24 days",
+      "bestFor": ["Surfers", "Creative professionals", "Young families who want the beach over the backyard"],
+      "streetsToKnow": [
+        { "name": "Neptune Ave", "why": "Oceanfront, walk down to Beacon's or Stone Steps" },
+        { "name": "Hermes Ave", "why": "Block-inland bungalows, the sweet spot for walkability plus value" },
+        { "name": "Grandview St", "why": "Family-scaled lots, 5-minute walk to a longboard-friendly break" }
+      ],
+      "relatedPosts": [
+        "leucadia-surfers-buyer-guide",
+        "leucadia-vs-cardiff-which-is-right-for-you",
+        "old-encinitas-vs-new-encinitas"
+      ]
+    },
+    "del-mar": {
+      "name": "Del Mar",
+      "zip": "92014",
+      "tag": "Clifftop village",
+      "hero": "home-pool.jpg",
+      "lede": "The most compact coastal village in North County. Two miles long, one zip code, and prices that reflect the scarcity. If you want the best-in-class coastal lifestyle and you have the budget, this is the pick.",
+      "vibe": "Polished, quiet, walking-village energy. The Beach Colony walk-streets, Del Mar Heights' family pockets, and the racetrack-to-fairgrounds rhythm that defines the calendar.",
+      "priceRange": "$2.5M – $15M+",
+      "typicalDom": "18–40 days",
+      "bestFor": ["Downsizers trading a big inland home for coastal walkability", "Families targeting Del Mar Union schools", "Second-home buyers"],
+      "streetsToKnow": [
+        { "name": "Stratford Ct", "why": "Beach Colony walk-streets, truly walk-to-the-sand" },
+        { "name": "Crest Rd", "why": "View ridge, some of the best panoramic lots in North County" },
+        { "name": "Del Mar Heights Rd", "why": "Family-scaled blocks, top-rated elementary" }
+      ],
+      "relatedPosts": [
+        "del-mar-92014-neighborhood-guide",
+        "first-time-buyer-coastal-san-diego",
+        "coastal-home-inspection-what-to-watch-for"
+      ]
+    },
+    "solana-beach": {
+      "name": "Solana Beach",
+      "zip": "92075",
+      "tag": "Walkable small town",
+      "hero": "home-exterior.jpg",
+      "lede": "Solana Beach is the quiet middle child between Del Mar and Encinitas, and the buyers who figure that out save meaningful money. Walkable, family-scaled, and aging beautifully.",
+      "vibe": "Small-town California with a designer streak. The Cedros Design District, easy beach access, solid public schools, and fewer tourists than its neighbors.",
+      "priceRange": "$1.7M – $5M",
+      "typicalDom": "15–28 days",
+      "bestFor": ["Families who want Del Mar Union without Del Mar prices", "Design-minded buyers", "Anyone tired of the Encinitas summer crowds"],
+      "streetsToKnow": [
+        { "name": "Cedros Ave", "why": "The design district spine, unique for its shops plus residential feel" },
+        { "name": "Via de la Valle (eastern side)", "why": "Larger lots, quiet, close to the racetrack" },
+        { "name": "Sierra Ave", "why": "Classic walkable blocks, short stroll to the sand" }
+      ],
+      "relatedPosts": [
+        "first-time-buyer-coastal-san-diego",
+        "coastal-home-inspection-what-to-watch-for"
+      ]
+    },
+    "la-jolla": {
+      "name": "La Jolla",
+      "zip": "92037",
+      "tag": "Coastal luxury",
+      "hero": "neighborhood.jpg",
+      "lede": "La Jolla is a different market from the North County coast — higher ceilings, longer DOMs, and a buyer pool that stretches across both coasts and the Pacific. Here's what actually defines each pocket.",
+      "vibe": "European-village walkability in the Cove and Village, suburban ease in Muirlands, oceanfront drama on the Bird Rock cliffs. Four or five mini-markets inside one zip.",
+      "priceRange": "$2.5M – $30M+",
+      "typicalDom": "25–60 days",
+      "bestFor": ["High-net-worth primary buyers", "International buyers", "Downsizers from larger inland estates"],
+      "streetsToKnow": [
+        { "name": "La Jolla Farms Rd", "why": "The biggest lots in the zip, famous ocean view parcels" },
+        { "name": "Prospect St", "why": "Village spine, walk to coves and restaurants" },
+        { "name": "Camino de la Costa", "why": "Bird Rock oceanfront, some of the most distinctive homes in SD" }
+      ],
+      "relatedPosts": [
+        "first-time-buyer-coastal-san-diego",
+        "coastal-home-inspection-what-to-watch-for"
+      ]
+    },
+    "carlsbad": {
+      "name": "Carlsbad",
+      "zip": "92008 / 92009 / 92010 / 92011",
+      "tag": "Four zips, four lifestyles",
+      "hero": "home-interior.jpg",
+      "lede": "Carlsbad is really four different towns sharing a city limit. The old village (92008) lives differently from La Costa (92009), from Bressi Ranch (92010), from the master-planned coast of 92011. Pick the right zip, not just the city.",
+      "vibe": "92008 is walkable beach village. 92009 is master-planned family life around La Costa. 92010 is newer, Bressi Ranch and the commercial belt. 92011 is coastal Carlsbad — Aviara, the resort corridor, the calmest beaches north of Encinitas.",
+      "priceRange": "$1.2M – $6M",
+      "typicalDom": "18–32 days",
+      "bestFor": ["Families needing newer construction and space", "Relocation buyers from out-of-state (the value play vs. Encinitas)", "Empty-nesters targeting the 92008 village"],
+      "streetsToKnow": [
+        { "name": "Ocean St", "why": "92008 oceanfront — walk to the village, one of the best village-plus-beach combos in the county" },
+        { "name": "Aviara Pkwy", "why": "92011 resort-corridor estates, family-scaled" },
+        { "name": "Levante St", "why": "La Costa — pool homes, larger lots, solid schools" }
+      ],
+      "relatedPosts": [
+        "carlsbad-92008-vs-92011-which-zip-code",
+        "first-time-buyer-coastal-san-diego",
+        "moving-to-san-diego-from-out-of-state"
+      ]
+    },
+    "oceanside": {
+      "name": "Oceanside",
+      "zip": "92054",
+      "tag": "Pier + sand",
+      "hero": "coast-sunset.jpg",
+      "lede": "Oceanside is the value frontier of the North County coast. It's having a real moment — the pier, the downtown food scene, the South O surf grid — and prices still start meaningfully below its neighbors.",
+      "vibe": "Mixed and evolving. South Oceanside is a tight, family-friendly surf grid with cottages. Downtown and the pier area are in the middle of a real renaissance. North Oceanside skews more transplant-heavy and still offers real entry-level coastal pricing.",
+      "priceRange": "$900K – $3.5M",
+      "typicalDom": "22–40 days",
+      "bestFor": ["First-time coastal buyers", "Remote workers who want the beach without the $2M ceiling", "Investment buyers looking at short-term rental potential (check current O'side STR rules)"],
+      "streetsToKnow": [
+        { "name": "S Pacific St", "why": "Oceanfront in South O, best pricing per beach-block in the county" },
+        { "name": "Cassidy St grid", "why": "South Oceanside cottages, walk to the pier and to the Cassidy Street dining" },
+        { "name": "The Strand", "why": "Downtown boardwalk-adjacent, the face of the Oceanside renaissance" }
+      ],
+      "relatedPosts": [
+        "first-time-buyer-coastal-san-diego",
+        "coastal-home-inspection-what-to-watch-for",
+        "moving-to-san-diego-from-out-of-state"
+      ]
+    }
+  }
+}

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neighborhood — Coast Homes by Aja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css?v=15" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+      <rect width="400" height="400" fill="#f6f4ee"/>
+      <text x="200" y="220" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="40" fill="#0d1f29">Hood</text>
+    </svg>
+  </template>
+
+  <header class="nav is-scrolled" style="position: sticky;">
+    <a href="coast-homes-by-aja-v2.html" class="nav__brand">
+      <img src="assets/logo-full.png" alt="Coast Homes by Aja" />
+    </a>
+    <nav class="nav__links">
+      <a href="coast-homes-by-aja-v2.html#concierge">Services</a>
+      <a href="coast-homes-by-aja-v2.html#about">About Aja</a>
+      <a href="coast-homes-by-aja-v2.html#places" style="color: var(--accent)">Lifestyle</a>
+      <a href="blog.html">Blog</a>
+      <a href="coast-homes-by-aja-v2.html#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="nav__btn" href="coast-homes-by-aja-v2.html#wizard">Start my search</a>
+    </div>
+  </header>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function Neighborhood() {
+      const [data, setData] = useState(null);
+      const [posts, setPosts] = useState([]);
+      const slug = new URLSearchParams(window.location.search).get("slug");
+
+      useEffect(() => {
+        fetch("blog/neighborhoods.json").then(r => r.json()).then(d => setData(d.neighborhoods || {}));
+        fetch("blog/posts.json").then(r => r.json()).then(d => setPosts(d.posts || []));
+      }, []);
+
+      const n = data && data[slug];
+
+      useEffect(() => {
+        if (n) document.title = `${n.name} — Coast Homes by Aja`;
+      }, [n]);
+
+      if (!data) return <main className="post"><p>Loading…</p></main>;
+      if (!n) {
+        return (
+          <main className="post post__missing">
+            <h1>Neighborhood not found</h1>
+            <p>We don't have a full page for that one yet.</p>
+            <a className="btn btn--ghost" href="coast-homes-by-aja-v2.html#places">← All neighborhoods</a>
+          </main>
+        );
+      }
+
+      const related = (n.relatedPosts || [])
+        .map(slug => posts.find(p => p.slug === slug))
+        .filter(Boolean);
+
+      return (
+        <main className="hood">
+          <a className="post__back" href="coast-homes-by-aja-v2.html#places">← All neighborhoods</a>
+
+          <div className="hood__head">
+            <div className="hood__head-copy">
+              <span className="eyebrow">{n.zip} · {n.tag}</span>
+              <h1>{n.name}</h1>
+              <p className="lede">{n.lede}</p>
+            </div>
+            <div className="hood__head-media">
+              <img src={`assets/${n.hero}`} alt={n.name} />
+            </div>
+          </div>
+
+          <div className="hood__stats">
+            <div>
+              <span className="eyebrow">Typical price range</span>
+              <strong>{n.priceRange}</strong>
+            </div>
+            <div>
+              <span className="eyebrow">Days on market</span>
+              <strong>{n.typicalDom}</strong>
+            </div>
+            <div>
+              <span className="eyebrow">Zip</span>
+              <strong>{n.zip}</strong>
+            </div>
+          </div>
+
+          <section className="hood__section">
+            <h2>The <em>vibe</em>, honestly.</h2>
+            <p>{n.vibe}</p>
+          </section>
+
+          <section className="hood__section">
+            <h2>Who it's <em>right for</em>.</h2>
+            <ul className="hood__list">
+              {(n.bestFor || []).map(b => <li key={b}>{b}</li>)}
+            </ul>
+          </section>
+
+          <section className="hood__section">
+            <h2>Streets to <em>know</em>.</h2>
+            <div className="hood__streets">
+              {(n.streetsToKnow || []).map(s => (
+                <div key={s.name} className="hood__street">
+                  <h4>{s.name}</h4>
+                  <p>{s.why}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {related.length > 0 && (
+            <section className="hood__section">
+              <h2>Deeper reads on {n.name}.</h2>
+              <div className="hood__related">
+                {related.map(p => (
+                  <a key={p.slug} className="hood__related-card" href={`post.html?slug=${p.slug}`}>
+                    <div className="hood__related-img">
+                      <img src={`assets/${p.image}`} alt={p.title} />
+                    </div>
+                    <div>
+                      <span className="kicker">{p.kicker}</span>
+                      <h4>{p.title}</h4>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <div className="post__cta">
+            <h3>Thinking about <em>{n.name}</em>?</h3>
+            <p>Tell me what you're looking for — timeline, budget, must-haves — and I'll send you the homes that actually fit, not just the ones on the public feeds.</p>
+            <div className="actions">
+              <a className="btn btn--primary" href="coast-homes-by-aja-v2.html#wizard">Start the intake →</a>
+            </div>
+          </div>
+        </main>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Neighborhood />);
+  </script>
+
+  <footer class="foot">
+    <div class="foot__sub" style="border-top: 1px solid var(--rule); padding-top: 32px; padding-left: 5%; padding-right: 5%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+      <span>© 2026 Coast Homes by Aja</span>
+      <span>DRE #01918735 · <a href="coast-homes-by-aja-v2.html">Back to home →</a></span>
+    </div>
+  </footer>
+</body>
+</html>

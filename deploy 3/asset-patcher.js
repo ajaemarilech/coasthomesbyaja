@@ -1,0 +1,1 @@
+/* no-op: assets served from /assets/ folder */

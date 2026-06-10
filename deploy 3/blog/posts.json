@@ -1,0 +1,226 @@
+{
+  "_comment": "Blog post manifest. New posts go at the TOP of the array. See CLAUDE.md for strategy.",
+  "posts": [
+    {
+      "slug": "mello-roos-encinitas-ranch-what-you-pay",
+      "title": "Mello-Roos in Encinitas Ranch: What You're Actually Paying",
+      "kicker": "Neighborhood Deep-Dive",
+      "excerpt": "That extra line on the tax bill scares off half the buyers who tour Encinitas Ranch. Here's what Mello-Roos actually is, how to check the real number for any address, and why the math still works for a lot of families.",
+      "category": "Neighborhoods",
+      "date": "2026-06-10",
+      "readTime": 8,
+      "image": "home-exterior.jpg",
+      "featured": true
+    },
+    {
+      "slug": "village-park-encinitas-neighborhood-guide",
+      "title": "Village Park: The Encinitas Pocket Families Fight Over",
+      "kicker": "Neighborhood Deep-Dive",
+      "excerpt": "Greenbelt paths, swim clubs, single-story floor plans, and some of the last sane pricing in 92024. Why Village Park homes trade fast and quietly — and how to actually get one.",
+      "category": "Neighborhoods",
+      "date": "2026-05-27",
+      "readTime": 7,
+      "image": "neighborhood.jpg"
+    },
+    {
+      "slug": "adu-rules-encinitas-2026-guide",
+      "title": "ADU Rules in Encinitas: A 2026 Owner's Guide",
+      "kicker": "Buyer Guide",
+      "excerpt": "Granny flat, backyard rental, multigenerational setup — whatever you're calling it, Encinitas is one of the more ADU-friendly coastal cities. What you can build, what trips people up, and how an ADU changes your home's value.",
+      "category": "Buying",
+      "date": "2026-05-13",
+      "readTime": 7,
+      "image": "home-interior.jpg"
+    },
+    {
+      "slug": "olivenhain-92024-neighborhood-guide",
+      "title": "Olivenhain: The 92024 Pocket Most Buyers Overlook",
+      "kicker": "Neighborhood Deep-Dive",
+      "excerpt": "Two miles inland from the coast, on half-acre+ lots, with horse trails and the best public schools in Encinitas. Here's why Olivenhain quietly outperforms.",
+      "category": "Neighborhoods",
+      "date": "2026-04-29",
+      "readTime": 8,
+      "image": "neighborhood.jpg"
+    },
+    {
+      "slug": "encinitas-spring-2026-market-snapshot",
+      "title": "Encinitas Spring 2026 Market Snapshot",
+      "kicker": "Market Update",
+      "excerpt": "Inventory ticked up 18% over winter, days-on-market is creeping back to a healthier 21 days, and the under-$2M range is finally negotiable again. Here's what it means for buyers and sellers right now.",
+      "category": "Market",
+      "date": "2026-04-22",
+      "readTime": 6,
+      "image": "coast-aerial.jpg"
+    },
+    {
+      "slug": "old-encinitas-vs-new-encinitas",
+      "title": "Old Encinitas vs. New Encinitas: The Real Difference",
+      "kicker": "Neighborhood Deep-Dive",
+      "excerpt": "Same city, two completely different markets. Old Encinitas is the walkable downtown core. New Encinitas is the inland family belt. Here's how to choose — and how the prices actually compare.",
+      "category": "Neighborhoods",
+      "date": "2026-04-15",
+      "readTime": 9,
+      "image": "home-exterior.jpg"
+    },
+    {
+      "slug": "leucadia-vs-cardiff-which-is-right-for-you",
+      "title": "Leucadia vs. Cardiff: Which Coastal Pocket Is Right For You?",
+      "kicker": "Neighborhood Deep-Dive",
+      "excerpt": "They're a mile apart and worlds apart. Leucadia is your laid-back surf town with the bungalow streets. Cardiff is the cliff-side village with the better dinner reservations. Here's how to pick.",
+      "category": "Neighborhoods",
+      "date": "2026-04-08",
+      "readTime": 9,
+      "image": "surfer.jpg"
+    },
+    {
+      "slug": "california-to-tennessee-relocation-honest-look",
+      "title": "California to Tennessee: An Honest Look at the Move",
+      "kicker": "Relocation",
+      "excerpt": "Nashville and Knoxville keep showing up in my client conversations. Here's the real cost-of-living math, the tax piece your CPA should confirm, and the lifestyle trade-offs nobody warns you about.",
+      "category": "Relocation",
+      "date": "2026-04-01",
+      "readTime": 10,
+      "image": "home-modern.jpg"
+    },
+    {
+      "slug": "moving-to-san-diego-from-out-of-state",
+      "title": "Moving to San Diego From Out of State: The Honest Playbook",
+      "kicker": "Relocation",
+      "excerpt": "What no one tells you about insurance, schools, the marine layer, and which neighborhoods are quietly priced for transplants. A 14-year coast Realtor's actual notes.",
+      "category": "Relocation",
+      "date": "2026-03-25",
+      "readTime": 11,
+      "image": "hero-stairs.jpg"
+    },
+    {
+      "slug": "encinitas-closing-costs-92024",
+      "title": "What Closing Costs Actually Look Like in 92024",
+      "kicker": "Buyer Guide",
+      "excerpt": "Buyer side, seller side, and the line items every Encinitas first-timer underestimates. A line-by-line walkthrough using real numbers from a recent $1.85M Cardiff close.",
+      "category": "Buying",
+      "date": "2026-03-18",
+      "readTime": 7,
+      "image": "home-kitchen.jpg"
+    },
+    {
+      "slug": "what-actually-adds-value-before-you-list",
+      "title": "What Actually Adds Value Before You List (And What Doesn't)",
+      "kicker": "Selling",
+      "excerpt": "Skip the kitchen reno. Here are the five sub-$5,000 prep moves that consistently move my Encinitas listings $40K+ over ask, and the three big-ticket projects buyers won't pay you back for.",
+      "category": "Selling",
+      "date": "2026-03-11",
+      "readTime": 7,
+      "image": "home-interior.jpg"
+    },
+    {
+      "slug": "how-the-relocation-concierge-actually-works",
+      "title": "How the Relocation Concierge Actually Works (Step by Step)",
+      "kicker": "How I Work",
+      "excerpt": "The 20-minute call, the network vetting, and how I get paid by the receiving Realtor — not by you. The full playbook for the service most clients still don't realize is free.",
+      "category": "How I Work",
+      "date": "2026-03-04",
+      "readTime": 6,
+      "image": "concierge-connection.webp"
+    },
+    {
+      "slug": "first-time-buyer-coastal-san-diego",
+      "title": "First-Time Buyer in Coastal San Diego? Read This First",
+      "kicker": "Buyer Guide",
+      "excerpt": "The pre-approval mistakes that kill offers, the 92024 streets where you can still find under-$1.5M, and why your first home here doesn't have to be your forever home.",
+      "category": "Buying",
+      "date": "2026-02-26",
+      "readTime": 8,
+      "image": "home-modern.jpg"
+    },
+    {
+      "slug": "leucadia-surfers-buyer-guide",
+      "title": "The Leucadia Surfer's Buyer Guide",
+      "kicker": "Buyer Guide",
+      "excerpt": "Beacon's, Stone Steps, Grandview, Ponto. Where to live so you can paddle out before work, what each break costs in dollars-per-block, and the streets that get the cleanest morning offshore.",
+      "category": "Buying",
+      "date": "2026-02-19",
+      "readTime": 8,
+      "image": "surfer.jpg"
+    },
+    {
+      "slug": "del-mar-92014-neighborhood-guide",
+      "title": "Del Mar 92014: A Block-by-Block Guide",
+      "kicker": "Neighborhood Deep-Dive",
+      "excerpt": "From the Beach Colony walk-streets to Del Mar Heights' family pockets, here's where the value sits and where the views actually stay clear in winter.",
+      "category": "Neighborhoods",
+      "date": "2026-02-12",
+      "readTime": 10,
+      "image": "home-pool.jpg"
+    },
+    {
+      "slug": "selling-california-home-to-fund-relocation",
+      "title": "Selling Your California Home to Fund a Relocation: The Math",
+      "kicker": "Relocation",
+      "excerpt": "How to actually price the equity rollover from a $1.8M coast sale into a $700K out-of-state buy. Capital gains, the 121 exclusion, and the timing trick that saves most movers six figures.",
+      "category": "Relocation",
+      "date": "2026-02-05",
+      "readTime": 9,
+      "image": "home-pool.jpg"
+    },
+    {
+      "slug": "coastal-home-inspection-what-to-watch-for",
+      "title": "Coastal Home Inspection: 7 Things You Won't Find Inland",
+      "kicker": "Buyer Guide",
+      "excerpt": "Salt air does things to copper, stucco, and rooflines that an inland inspector won't flag. Bring this checklist on every walk-through within two miles of the water.",
+      "category": "Buying",
+      "date": "2026-01-29",
+      "readTime": 6,
+      "image": "coast-cliffs.jpg"
+    },
+    {
+      "slug": "selling-a-home-while-relocating-out-of-san-diego",
+      "title": "Selling a Home While Relocating Out of San Diego",
+      "kicker": "Relocation",
+      "excerpt": "How to coordinate a coast sale with an out-of-state purchase without owning two homes (or none) for six months. The bridge-loan-free playbook I use with my concierge clients.",
+      "category": "Relocation",
+      "date": "2026-01-15",
+      "readTime": 9,
+      "image": "home-exterior.jpg"
+    },
+    {
+      "slug": "carlsbad-92008-vs-92011-which-zip-code",
+      "title": "Carlsbad 92008 vs. 92011: Two Zip Codes, Two Lifestyles",
+      "kicker": "Neighborhood Deep-Dive",
+      "excerpt": "Old village walkability or master-planned La Costa convenience? They share a city name and almost nothing else. A side-by-side breakdown of price, schools, and feel.",
+      "category": "Neighborhoods",
+      "date": "2026-01-02",
+      "readTime": 8,
+      "image": "neighborhood.jpg"
+    },
+    {
+      "slug": "concierge-vs-referral-network-whats-the-difference",
+      "title": "Concierge vs. Lead Referral Network: What's Actually Different",
+      "kicker": "How I Work",
+      "excerpt": "Why a personally-vetted Realtor introduction beats a generic referral platform every time, and what that actually looks like when you're moving cross-country.",
+      "category": "How I Work",
+      "date": "2025-12-18",
+      "readTime": 5,
+      "image": "concierge-connection.webp"
+    },
+    {
+      "slug": "encinitas-92024-school-boundary-guide",
+      "title": "The Encinitas 92024 School Boundary Guide",
+      "kicker": "Lifestyle",
+      "excerpt": "EUSD vs. Cardiff School District, why one block can mean a different elementary, and the boundary-line streets buyers consistently underprice.",
+      "category": "Lifestyle",
+      "date": "2025-12-04",
+      "readTime": 7,
+      "image": "palms.jpg"
+    },
+    {
+      "slug": "what-i-tell-every-client-before-we-start-looking",
+      "title": "What I Tell Every Client Before We Start Looking",
+      "kicker": "Buyer Guide",
+      "excerpt": "The 20-minute conversation I have at the start of every search that saves my clients about three months of wandering. You can have this conversation with yourself.",
+      "category": "Buying",
+      "date": "2025-11-20",
+      "readTime": 6,
+      "image": "aja-portrait.webp"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coast Homes by Aja — San Diego Realtor + Concierge</title>
+  <meta name="description" content="Aja Lechowicz — San Diego Realtor and concierge. Encinitas, Cardiff, Leucadia, and the rest of the coast. Plus a free relocation network for moves anywhere in the U.S." />
+  <link rel="canonical" href="https://coasthomesbyaja.com/" />
+
+  <!-- Open Graph / Facebook / iMessage / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://coasthomesbyaja.com/" />
+  <meta property="og:title" content="Coast Homes by Aja — San Diego Realtor + Concierge" />
+  <meta property="og:description" content="A San Diego Realtor and relocation concierge. Encinitas, Cardiff, Leucadia, and the rest of the coast — plus a vetted Realtor network for moves anywhere in the U.S." />
+  <meta property="og:image" content="https://coasthomesbyaja.com/assets/coast-aerial.jpg" />
+  <meta property="og:image:alt" content="Aerial view of the Encinitas coastline" />
+  <meta property="og:site_name" content="Coast Homes by Aja" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Coast Homes by Aja — San Diego Realtor + Concierge" />
+  <meta name="twitter:description" content="A San Diego Realtor and relocation concierge — Encinitas, Cardiff, Leucadia, and beyond." />
+  <meta name="twitter:image" content="https://coasthomesbyaja.com/assets/coast-aerial.jpg" />
+
+  <link rel="icon" type="image/png" href="assets/logo-icon.png" />
+  <link rel="apple-touch-icon" href="assets/logo-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="styles.css?v=16" />
+
+  
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+      <rect width="400" height="400" fill="#f6f4ee"/>
+      <g transform="translate(200 210)">
+        <path d="M-70 -40 Q-70 -90 -20 -90 Q-10 -110 10 -90 Q60 -90 60 -40 Q60 10 10 40 Q-10 60 -30 40 Q-70 10 -70 -40 Z" fill="none" stroke="#6fbfa3" stroke-width="4"/>
+        <text x="0" y="100" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="28" fill="#0d1f29">Coast Homes</text>
+      </g>
+    </svg>
+  </template>
+  <div id="root"></div>
+
+  <!-- Tweaks panel (user controls) -->
+  <div id="tweaks" class="tweaks">
+    <h5><span>Tweaks</span><span id="tweaks-hint">live</span></h5>
+
+    <div class="tweaks__group">
+      <label>Palette</label>
+      <div class="tweaks__options" data-group="palette">
+        <button data-val="ocean">Ocean</button>
+        <button data-val="sand">Sand</button>
+        <button data-val="mono">Mono</button>
+        <button data-val="warm">Warm</button>
+      </div>
+    </div>
+    <div class="tweaks__group">
+      <label>Display font</label>
+      <div class="tweaks__options" data-group="display">
+        <button data-val="playfair">Playfair</button>
+        <button data-val="fraunces">Fraunces</button>
+        <button data-val="instrument">Instrument</button>
+        <button data-val="cormorant">Cormorant</button>
+      </div>
+    </div>
+    <div class="tweaks__group">
+      <label>Density</label>
+      <div class="tweaks__options" data-group="density" style="grid-template-columns: repeat(2, 1fr)">
+        <button data-val="airy">Airy</button>
+        <button data-val="compact">Compact</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---- Tweak defaults persisted to disk via EDITMODE block ----
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "palette": "ocean",
+      "display": "playfair",
+      "density": "airy"
+    }/*EDITMODE-END*/;
+
+    const root = document.documentElement;
+    function applyTweaks(t) {
+      root.setAttribute("data-palette", t.palette);
+      root.setAttribute("data-display", t.display);
+      root.setAttribute("data-density", t.density);
+      document.querySelectorAll("#tweaks .tweaks__options").forEach(group => {
+        const key = group.dataset.group;
+        group.querySelectorAll("button").forEach(b => {
+          b.classList.toggle("active", b.dataset.val === t[key]);
+        });
+      });
+    }
+    const state = { ...TWEAK_DEFAULTS };
+    applyTweaks(state);
+
+    document.querySelectorAll("#tweaks .tweaks__options").forEach(group => {
+      const key = group.dataset.group;
+      group.addEventListener("click", (e) => {
+        const btn = e.target.closest("button");
+        if (!btn) return;
+        state[key] = btn.dataset.val;
+        applyTweaks(state);
+        try {
+          window.parent.postMessage({ type: "__edit_mode_set_keys", edits: { [key]: btn.dataset.val } }, "*");
+        } catch {}
+      });
+    });
+
+    // ---- Tweaks toggle contract ----
+    const tweaksEl = document.getElementById("tweaks");
+    window.addEventListener("message", (e) => {
+      const d = e.data || {};
+      if (d.type === "__activate_edit_mode") tweaksEl.classList.add("open");
+      if (d.type === "__deactivate_edit_mode") tweaksEl.classList.remove("open");
+    });
+    try { window.parent.postMessage({ type: "__edit_mode_available" }, "*"); } catch {}
+  </script>
+
+  <script type="text/babel" src="app.jsx?v=18"></script>
+  <script type="text/babel">
+    const rootEl = document.getElementById("root");
+    ReactDOM.createRoot(rootEl).render(<App />);
+  </script>
+</body>
+</html>

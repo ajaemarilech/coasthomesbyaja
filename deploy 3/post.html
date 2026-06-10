@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journal — Coast Homes by Aja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css?v=15" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="blog/post-bodies.js"></script>
+</head>
+<body>
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+      <rect width="400" height="400" fill="#f6f4ee"/>
+      <text x="200" y="220" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="40" fill="#0d1f29">Post</text>
+    </svg>
+  </template>
+
+  <header class="nav is-scrolled" style="position: sticky;">
+    <a href="coast-homes-by-aja-v2.html" class="nav__brand">
+      <img src="assets/logo-full.png" alt="Coast Homes by Aja" />
+    </a>
+    <nav class="nav__links">
+      <a href="coast-homes-by-aja-v2.html#concierge">Services</a>
+      <a href="coast-homes-by-aja-v2.html#about">About Aja</a>
+      <a href="coast-homes-by-aja-v2.html#places">Lifestyle</a>
+      <a href="blog.html" style="color: var(--accent)">Blog</a>
+      <a href="coast-homes-by-aja-v2.html#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <a class="nav__btn" href="coast-homes-by-aja-v2.html#wizard">Start my search</a>
+    </div>
+  </header>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    function Post() {
+      const [posts, setPosts] = useState([]);
+      const slug = new URLSearchParams(window.location.search).get("slug");
+      useEffect(() => {
+        fetch("blog/posts.json").then(r => r.json()).then(d => setPosts(d.posts || []));
+      }, []);
+
+      const post = posts.find(p => p.slug === slug);
+
+      useEffect(() => {
+        if (post) document.title = `${post.title} — Coast Homes by Aja`;
+      }, [post]);
+
+      if (!posts.length) return <main className="post"><p>Loading…</p></main>;
+      if (!post) {
+        return (
+          <main className="post post__missing">
+            <h1>Post not found</h1>
+            <p>That post may have moved. Try the index.</p>
+            <a className="btn btn--ghost" href="blog.html">← All posts</a>
+          </main>
+        );
+      }
+      const body = (window.BLOG_BODIES && window.BLOG_BODIES[slug]) || `<p>${post.excerpt}</p><p><em>Full post coming soon.</em></p>`;
+      const fmt = s => new Date(s).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+      const more = posts.filter(p => p.slug !== slug).slice(0, 2);
+
+      return (
+        <main className="post">
+          <a className="post__back" href="blog.html">← All posts</a>
+          <div className="post__kicker">{post.kicker}</div>
+          <h1>{post.title}</h1>
+          <div className="post__meta">
+            <span>{fmt(post.date)}</span>
+            <span>{post.readTime} min read</span>
+            <span>By Aja Lechowicz</span>
+          </div>
+          <div className="post__hero">
+            <img src={`assets/${post.image}`} alt={post.title} />
+          </div>
+          <article className="post__body" dangerouslySetInnerHTML={{ __html: body }} />
+
+          <div className="post__cta">
+            <h3>Thinking about a <em>move</em>?</h3>
+            <p>Whether you're buying or selling on the San Diego coast, or relocating anywhere else in the U.S., the first step is a 20-minute conversation. No pitch.</p>
+            <div className="actions">
+              <a className="btn btn--primary" href="coast-homes-by-aja-v2.html#wizard">Start the intake →</a>
+            </div>
+          </div>
+
+          {more.length > 0 && (
+            <div className="post__more">
+              <h4>More from the desk</h4>
+              <div className="post__more-grid">
+                {more.map(p => (
+                  <a key={p.slug} className="post__more-card" href={`post.html?slug=${p.slug}`}>
+                    <span className="kicker">{p.kicker}</span>
+                    <h5>{p.title}</h5>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </main>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Post />);
+  </script>
+
+  <footer class="foot">
+    <div class="foot__sub" style="border-top: 1px solid var(--rule); padding-top: 32px;">
+      <span>© 2026 Coast Homes by Aja</span>
+      <span>DRE #01918735 · <a href="coast-homes-by-aja-v2.html">Back to home →</a></span>
+    </div>
+  </footer>
+</body>
+</html>

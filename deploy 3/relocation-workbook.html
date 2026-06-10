@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Lifestyle Relocation Workbook — Coast Homes by Aja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0d1f29;
+      --paper: #faf9f5;
+      --teal: #4a9e8a;
+      --teal-light: #e8f4f1;
+      --sand: #c9b99a;
+      --warm: #f5f0e8;
+      --muted: #6b7a85;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter Tight', system-ui, sans-serif;
+    }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
+
+    /* ── GATE ── */
+    #gate {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 20px;
+      background: var(--ink);
+      position: relative; overflow: hidden;
+    }
+    #gate::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('assets/coast-sunset.jpg') center/cover no-repeat;
+      opacity: 0.2;
+    }
+    .gate__box {
+      position: relative;
+      background: var(--paper);
+      border-radius: 4px;
+      padding: 56px 48px;
+      max-width: 540px; width: 100%;
+      text-align: center;
+    }
+    .gate__eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--teal);
+      display: block; margin-bottom: 16px;
+    }
+    .gate__title { font-family: var(--serif); font-size: clamp(30px, 5vw, 46px); font-weight: 400; line-height: 1.1; margin-bottom: 8px; }
+    .gate__title em { font-style: italic; color: var(--teal); }
+    .gate__sub { color: var(--muted); font-size: 14px; margin-bottom: 32px; line-height: 1.5; }
+    .gate__bullets { list-style: none; text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+    .gate__bullets li { font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+    .gate__bullets li::before { content: '→'; color: var(--teal); flex-shrink: 0; }
+    .gate__form { display: flex; flex-direction: column; gap: 12px; }
+    .gate__form input {
+      width: 100%; padding: 14px 16px;
+      border: 1.5px solid #ddd; border-radius: 3px;
+      font-family: var(--sans); font-size: 14px;
+      background: #fff; color: var(--ink); transition: border-color .2s;
+    }
+    .gate__form input:focus { outline: none; border-color: var(--teal); }
+    .gate__submit {
+      width: 100%; padding: 16px;
+      background: var(--ink); color: #fff; border: none; border-radius: 3px;
+      font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: .04em;
+      cursor: pointer; transition: background .2s;
+    }
+    .gate__submit:hover { background: var(--teal); }
+    .gate__submit:disabled { opacity: .6; cursor: not-allowed; }
+    .gate__privacy { font-size: 11px; color: var(--muted); margin-top: 12px; }
+    .gate__error { color: #c0392b; font-size: 13px; margin-top: 8px; }
+
+    /* ── WORKBOOK ── */
+    #workbook { display: none; }
+    #workbook.visible { display: block; }
+
+    .wb-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* Cover */
+    .wb-cover {
+      min-height: 100vh;
+      background: var(--ink);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 64px 48px;
+      position: relative; overflow: hidden;
+    }
+    .wb-cover__bg {
+      position: absolute; inset: 0;
+      background: url('assets/coast-sunset.jpg') center/cover no-repeat;
+      opacity: 0.3;
+    }
+    .wb-cover__content { position: relative; color: #fff; }
+    .wb-cover__label { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); margin-bottom: 24px; display: block; }
+    .wb-cover h1 { font-family: var(--serif); font-size: clamp(44px, 7vw, 88px); font-weight: 400; line-height: 1; margin-bottom: 24px; }
+    .wb-cover h1 em { font-style: italic; color: var(--sand); }
+    .wb-cover__sub { font-size: 16px; color: rgba(255,255,255,.7); max-width: 480px; line-height: 1.5; }
+    .wb-cover__byline { margin-top: 48px; display: flex; align-items: center; gap: 16px; }
+    .wb-cover__byline img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,.3); }
+    .wb-cover__byline-text { font-size: 13px; color: rgba(255,255,255,.7); }
+    .wb-cover__byline-text strong { display: block; color: #fff; font-weight: 600; }
+
+    /* Sections */
+    .wb-section { padding: 72px 0 40px; border-bottom: 1px solid #e8e4dc; }
+    .wb-section:last-child { border-bottom: none; }
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 16px; }
+    .wb-section h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 42px); font-weight: 400; line-height: 1.15; margin-bottom: 24px; }
+    .wb-section h2 em { font-style: italic; }
+    .wb-section h3 { font-family: var(--serif); font-size: 20px; font-weight: 500; margin: 32px 0 12px; }
+    .wb-section p { color: #3a4a55; line-height: 1.75; margin-bottom: 16px; font-size: 15px; }
+
+    /* Exercise blocks */
+    .exercise {
+      background: var(--warm);
+      border: 1px solid #e0d9cc;
+      border-radius: 3px;
+      padding: 32px;
+      margin: 28px 0;
+    }
+    .exercise__label {
+      font-size: 10px; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 16px; display: block;
+    }
+    .exercise h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 12px; }
+    .exercise p { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+
+    /* Checkbox options */
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .check-item {
+      display: flex; align-items: center; gap: 10px;
+      background: #fff; border: 1.5px solid #ddd; border-radius: 3px;
+      padding: 12px 14px; cursor: pointer;
+      transition: border-color .15s, background .15s;
+      font-size: 13px; font-weight: 500;
+      user-select: none;
+    }
+    .check-item:hover { border-color: var(--teal); }
+    .check-item.selected { border-color: var(--teal); background: var(--teal-light); }
+    .check-item .box {
+      width: 16px; height: 16px; border: 1.5px solid #ccc; border-radius: 2px;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      transition: background .15s, border-color .15s;
+    }
+    .check-item.selected .box { background: var(--teal); border-color: var(--teal); }
+    .check-item.selected .box::after { content: '✓'; color: #fff; font-size: 10px; }
+
+    /* Slider */
+    .slider-row { display: flex; flex-direction: column; gap: 20px; margin-top: 16px; }
+    .slider-item { display: flex; flex-direction: column; gap: 6px; }
+    .slider-item label { font-size: 13px; font-weight: 500; display: flex; justify-content: space-between; }
+    .slider-item label span { color: var(--teal); font-weight: 600; }
+    .slider-item input[type=range] {
+      width: 100%; accent-color: var(--teal); cursor: pointer;
+    }
+    .slider-ends { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+
+    /* Text area */
+    .wb-textarea {
+      width: 100%; min-height: 80px; resize: vertical;
+      border: 1.5px solid #ddd; border-radius: 3px;
+      padding: 12px 14px; font-family: var(--sans); font-size: 14px;
+      color: var(--ink); background: #fff; line-height: 1.5;
+      transition: border-color .2s;
+    }
+    .wb-textarea:focus { outline: none; border-color: var(--teal); }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--teal); padding: 16px 24px;
+      margin: 32px 0; background: var(--teal-light); border-radius: 0 3px 3px 0;
+    }
+    .pull-quote p { font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--ink); margin: 0; line-height: 1.5; }
+
+    /* Aja tip */
+    .aja-tip {
+      background: var(--ink); color: #fff; border-radius: 3px;
+      padding: 28px 32px; margin: 32px 0;
+    }
+    .aja-tip__label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--sand); margin-bottom: 8px; display: block; }
+    .aja-tip p { font-size: 14px; color: rgba(255,255,255,.85); margin: 0; line-height: 1.6; }
+
+    /* Score card */
+    .score-card {
+      border: 1.5px solid #e8e4dc; border-radius: 3px;
+      padding: 24px; margin: 12px 0; background: #fff;
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .score-card__num {
+      font-family: var(--serif); font-size: 36px; color: var(--teal);
+      flex-shrink: 0; line-height: 1;
+    }
+    .score-card h4 { font-family: var(--serif); font-size: 18px; margin-bottom: 6px; }
+    .score-card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+    /* CTA */
+    .wb-cta {
+      background: var(--teal); color: #fff; border-radius: 4px;
+      padding: 48px; margin-top: 64px;
+    }
+    .wb-cta h2 { font-family: var(--serif); font-size: 36px; font-weight: 400; line-height: 1.1; margin-bottom: 12px; }
+    .wb-cta h2 em { font-style: italic; }
+    .wb-cta > p { color: rgba(255,255,255,.85); margin-bottom: 32px; max-width: 520px; }
+    .wb-cta__actions { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; }
+    .wb-cta__qr { background: #fff; padding: 16px 16px 12px; border-radius: 4px; text-align: center; width: max-content; }
+    .wb-cta__qr canvas { display: block; width: 160px; height: 160px; }
+    .wb-cta__qr span { display: block; margin-top: 8px; font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+    .wb-cta__lines { display: flex; flex-direction: column; gap: 20px; }
+    .wb-cta__btn {
+      display: inline-block; background: #fff; color: var(--ink);
+      padding: 14px 28px; border-radius: 3px; font-size: 14px;
+      font-weight: 600; text-decoration: none; letter-spacing: .04em; width: max-content;
+    }
+    .wb-cta__contact { display: grid; gap: 10px; font-size: 13px; }
+    .wb-cta__contact > div { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: baseline; }
+    .wb-cta__contact span { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+    .wb-cta__contact a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); padding-bottom: 1px; }
+    @media (max-width: 600px) {
+      .wb-cta { padding: 32px 24px; }
+      .wb-cta__actions { grid-template-columns: 1fr; gap: 24px; }
+      .wb-cta__qr { margin: 0 auto; }
+      .wb-cta__contact > div { grid-template-columns: 1fr; gap: 2px; }
+    }
+
+    @media (max-width: 600px) {
+      .gate__box { padding: 36px 24px; }
+      .wb-cover { padding: 40px 24px; }
+      .check-grid { grid-template-columns: 1fr; }
+      .score-card { flex-direction: column; gap: 8px; }
+    }
+
+    /* ── SAVE / PRINT TOOLBAR ── */
+    .guide-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .guide-toolbar__label {
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,.6);
+    }
+    .guide-toolbar__actions { display: flex; gap: 10px; }
+    .guide-toolbar__btn {
+      background: var(--teal); color: #fff; border: none;
+      padding: 10px 18px; font-family: var(--sans); font-size: 13px;
+      font-weight: 600; letter-spacing: .02em; border-radius: 999px;
+      cursor: pointer; transition: background .2s, transform .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .guide-toolbar__btn:hover { background: #3d8474; transform: translateY(-1px); }
+    .guide-toolbar__btn--ghost { background: transparent; border: 1px solid rgba(255,255,255,.25); }
+    .guide-toolbar__btn--ghost:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+    .guide-toolbar__btn svg { width: 14px; height: 14px; }
+    @media (max-width: 600px) {
+      .guide-toolbar { padding: 12px 16px; flex-wrap: wrap; }
+      .guide-toolbar__label { font-size: 10px; flex: 1 0 100%; }
+      .guide-toolbar__btn { padding: 9px 14px; font-size: 12px; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      @page {
+        size: letter;
+        margin: 0.7in 0.75in 0.85in;
+        @bottom-center {
+          content: "Coast Homes by Aja  ·  Lifestyle Relocation Workbook";
+          font-family: 'Inter Tight', system-ui, sans-serif;
+          font-size: 8.5pt;
+          letter-spacing: .08em;
+          color: #6b7a85;
+          padding-top: 12pt;
+        }
+        @bottom-right {
+          content: counter(page) " / " counter(pages);
+          font-family: 'Inter Tight', system-ui, sans-serif;
+          font-size: 8.5pt;
+          color: #6b7a85;
+          padding-top: 12pt;
+        }
+      }
+      @page :first {
+        margin: 0;
+        @bottom-center { content: ""; }
+        @bottom-right { content: ""; }
+      }
+
+      html, body {
+        background: var(--paper) !important;
+        color: var(--ink) !important;
+        font-family: var(--sans);
+        font-size: 10.5pt;
+        line-height: 1.6;
+      }
+
+      #gate, .guide-toolbar { display: none !important; }
+      #workbook { display: block !important; }
+
+      /* COVER */
+      .wb-cover {
+        min-height: 100vh;
+        height: 11in;
+        width: 8.5in;
+        margin: 0 !important;
+        padding: 1in 0.9in !important;
+        background: var(--ink) !important;
+        color: #fff !important;
+        page-break-after: always;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+      }
+      .wb-cover__bg {
+        background-image: url('assets/coast-sunset.jpg') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        opacity: 0.32 !important;
+      }
+      .wb-cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(13,31,41,0.4) 0%, rgba(13,31,41,0.92) 100%);
+      }
+      .wb-cover__content { position: relative; z-index: 2; color: #fff !important; max-width: 6.2in; }
+      .wb-cover__label { color: var(--sand) !important; font-size: 9pt !important; letter-spacing: .18em !important; }
+      .wb-cover h1 { font-size: 60pt !important; line-height: 0.95 !important; color: #fff !important; margin-bottom: 18pt !important; }
+      .wb-cover h1 em { color: var(--sand) !important; }
+      .wb-cover__sub { color: rgba(255,255,255,.78) !important; font-size: 13pt !important; max-width: 5in !important; }
+      .wb-cover__byline { margin-top: 32pt !important; }
+      .wb-cover__byline img { width: 42pt !important; height: 42pt !important; border-color: rgba(255,255,255,.4) !important; }
+      .wb-cover__byline-text { color: rgba(255,255,255,.75) !important; font-size: 10pt !important; }
+      .wb-cover__byline-text strong { color: #fff !important; }
+
+      /* BODY */
+      .wb-wrap { max-width: none !important; padding: 0 !important; }
+
+      .wb-section { padding: 24pt 0 16pt !important; border-bottom: 0.5pt solid #e0d9cb !important; page-break-inside: auto; }
+      .wb-section:first-of-type { padding-top: 0 !important; }
+      .wb-section:last-child { border-bottom: none !important; }
+
+      .section-label { color: var(--teal) !important; font-size: 8.5pt !important; letter-spacing: .2em !important; margin-bottom: 10pt !important; }
+
+      .wb-section h2 {
+        font-family: var(--serif);
+        font-size: 26pt !important;
+        line-height: 1.08 !important;
+        font-weight: 400;
+        margin-bottom: 16pt !important;
+        page-break-after: avoid;
+        color: var(--ink) !important;
+      }
+      .wb-section h2 em { color: var(--teal) !important; font-style: italic; }
+      .wb-section h3 { font-family: var(--serif); font-size: 14pt !important; font-weight: 500; margin: 18pt 0 8pt !important; page-break-after: avoid; }
+      .wb-section p { font-size: 10.5pt !important; line-height: 1.65 !important; color: #2a3741 !important; margin-bottom: 10pt !important; orphans: 3; widows: 3; }
+
+      /* Pull quote */
+      .pull-quote {
+        background: var(--teal-light) !important;
+        border-left: 3pt solid var(--teal) !important;
+        padding: 14pt 18pt !important;
+        margin: 18pt 0 !important;
+        page-break-inside: avoid;
+      }
+      .pull-quote p { font-family: var(--serif); font-size: 14pt !important; font-style: italic; color: var(--ink) !important; line-height: 1.45 !important; margin: 0 !important; }
+
+      /* Exercise */
+      .exercise {
+        background: #fff !important;
+        border: 0.5pt solid #d9d2c1 !important;
+        padding: 18pt !important;
+        margin: 14pt 0 !important;
+        page-break-inside: avoid;
+      }
+      .exercise h3 { margin-top: 0 !important; }
+      .exercise p { font-size: 10pt !important; color: var(--muted) !important; margin-bottom: 12pt !important; }
+
+      /* Check grid — keep two columns and tile clean */
+      .check-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6pt !important; }
+      .check-item {
+        background: #fff !important;
+        border: 0.5pt solid #c9c1ad !important;
+        padding: 8pt 10pt !important;
+        font-size: 10pt !important;
+        page-break-inside: avoid;
+      }
+      .check-item .box { width: 11pt !important; height: 11pt !important; border: 0.8pt solid #888 !important; }
+
+      /* Score card */
+      .score-card {
+        border: 0.5pt solid #d9d2c1 !important;
+        background: #fff !important;
+        padding: 14pt !important;
+        page-break-inside: avoid;
+        margin: 8pt 0 !important;
+      }
+      .score-card__num { color: var(--teal) !important; font-size: 24pt !important; }
+      .score-card h4 { font-size: 13pt !important; }
+      .score-card p { font-size: 9.5pt !important; color: var(--muted) !important; }
+
+      /* Textarea — flatten to underlined lines */
+      .wb-textarea {
+        background: transparent !important;
+        border: none !important;
+        border-bottom: 0.4pt solid #b8b0a0 !important;
+        min-height: 0 !important;
+        padding: 6pt 0 !important;
+        font-size: 10pt !important;
+      }
+
+      /* Aja tip */
+      .aja-tip {
+        background: var(--ink) !important;
+        color: #fff !important;
+        padding: 18pt 22pt !important;
+        margin: 18pt 0 !important;
+        page-break-inside: avoid;
+        gap: 16pt !important;
+      }
+      .aja-tip__label { color: var(--sand) !important; font-size: 8pt !important; }
+      .aja-tip p { color: rgba(255,255,255,.88) !important; font-size: 10pt !important; line-height: 1.55 !important; }
+
+      /* CTA */
+      .wb-cta {
+        background: var(--teal) !important;
+        color: #fff !important;
+        padding: 32pt !important;
+        margin-top: 32pt !important;
+        page-break-inside: avoid;
+      }
+      .wb-cta h2 { font-family: var(--serif); font-size: 22pt !important; color: #fff !important; margin-bottom: 6pt !important; }
+      .wb-cta > p { color: rgba(255,255,255,.88) !important; font-size: 10.5pt !important; margin-bottom: 18pt !important; max-width: 360pt !important; }
+      .wb-cta__actions { display: grid !important; grid-template-columns: auto 1fr !important; gap: 24pt !important; align-items: center !important; }
+      .wb-cta__qr { background: #fff !important; padding: 10pt 10pt 8pt !important; border-radius: 2pt !important; text-align: center !important; }
+      .wb-cta__qr canvas { width: 120pt !important; height: 120pt !important; display: block !important; }
+      .wb-cta__qr span { display: block !important; margin-top: 5pt !important; font-size: 7pt !important; font-weight: 600 !important; letter-spacing: .1em !important; text-transform: uppercase !important; color: var(--ink) !important; }
+      .wb-cta__lines { display: flex !important; flex-direction: column !important; gap: 14pt !important; }
+      .wb-cta__btn { display: inline-block !important; background: #fff !important; color: var(--ink) !important; padding: 9pt 18pt !important; font-size: 10pt !important; font-weight: 600 !important; width: max-content !important; text-decoration: none !important; }
+      .wb-cta__contact { display: grid !important; gap: 6pt !important; font-size: 9.5pt !important; }
+      .wb-cta__contact > div { display: grid !important; grid-template-columns: 62pt 1fr !important; gap: 8pt !important; }
+      .wb-cta__contact span { font-size: 7.5pt !important; font-weight: 600 !important; letter-spacing: .14em !important; text-transform: uppercase !important; color: rgba(255,255,255,.65) !important; }
+      .wb-cta__contact a { color: #fff !important; text-decoration: none !important; border-bottom: .5pt solid rgba(255,255,255,.35) !important; }
+
+      a { color: var(--ink); text-decoration: none; }
+      img { max-width: 100%; }
+      h1, h2, h3, h4 { page-break-after: avoid; }
+      p, li { orphans: 3; widows: 3; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- GATE -->
+<div id="gate">
+  <div class="gate__box">
+    <span class="gate__eyebrow">Free Workbook · Lifestyle Relocation</span>
+    <h1 class="gate__title">Find Where You're Supposed to <em>Live</em></h1>
+    <p class="gate__sub">A workbook to figure out exactly where in the U.S. your dream lifestyle actually exists — before you pack a single box.</p>
+    <ul class="gate__bullets">
+      <li>5 exercises to clarify what you actually want in a location</li>
+      <li>How to match your daily life to a city, not a vibe</li>
+      <li>The questions most people skip — and regret</li>
+      <li>A scoring system to compare your top cities honestly</li>
+      <li>My concierge service is completely free to you</li>
+    </ul>
+    <form class="gate__form" id="gate-form">
+      <input type="text" name="name" placeholder="Your full name" required autocomplete="name">
+      <input type="email" name="email" placeholder="Your email address" required autocomplete="email">
+      <button type="submit" class="gate__submit" id="gate-btn">Get the workbook →</button>
+      <div class="gate__error" id="gate-error" style="display:none"></div>
+    </form>
+    <p class="gate__privacy">No spam. No lead marketplace. Just the workbook — and a concierge in your corner.</p>
+  </div>
+</div>
+
+<!-- WORKBOOK -->
+<div id="workbook">
+
+  <!-- Save / Print toolbar -->
+  <div class="guide-toolbar">
+    <span class="guide-toolbar__label">Lifestyle Relocation Workbook · 32 pages</span>
+    <div class="guide-toolbar__actions">
+      <button class="guide-toolbar__btn" onclick="window.print()" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Save as PDF
+      </button>
+      <button class="guide-toolbar__btn guide-toolbar__btn--ghost" onclick="window.print()" type="button">
+        Print
+      </button>
+    </div>
+  </div>
+
+  <div class="wb-cover">
+    <div class="wb-cover__bg"></div>
+    <div class="wb-cover__content">
+      <span class="wb-cover__label">Coast Homes by Aja · Lifestyle Relocation Series</span>
+      <h1>Find Where<br/>You're Supposed<br/>to <em>Live</em></h1>
+      <p class="wb-cover__sub">A workbook to figure out exactly where in the U.S. your dream lifestyle actually exists.</p>
+      <div class="wb-cover__byline">
+        <img src="assets/aja-headshot.png" alt="Aja Lechowicz">
+        <div class="wb-cover__byline-text">
+          <strong>Aja Lechowicz</strong>
+          San Diego Realtor + Concierge · DRE #01918735
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wb-wrap">
+
+    <!-- Intro -->
+    <div class="wb-section">
+      <span class="section-label">Before You Begin</span>
+      <h2>Most people pick a city<br/>and <em>hope it fits.</em></h2>
+      <p>They pick the city their college friend moved to. Or the one that keeps showing up on "Best Places to Live" lists. Or the place they visited once on a long weekend and felt something.</p>
+      <p>That's not a strategy. It's a guess with a mortgage attached to it.</p>
+      <p>Where you live isn't just a backdrop — it's the foundation of your happiness. Your environment shapes your energy, your health, your creativity, and the way you see what's possible. When it doesn't fit, you feel restless and drained. When it does, life quietly starts working.</p>
+      <p>This workbook does something different. It starts with your life — the actual texture of your days, your non-negotiables, what you're moving <em>toward</em> as much as what you're leaving — and works backwards to a location that fits.</p>
+      <p>Work through each exercise honestly. There are no wrong answers. The point is clarity, not validation.</p>
+      <div class="pull-quote">
+        <p>"You don't find the right city. You figure out the right life first — and then the city becomes obvious."</p>
+      </div>
+    </div>
+
+    <!-- Exercise 1 -->
+    <div class="wb-section">
+      <span class="section-label">Exercise 01</span>
+      <h2>Describe your<br/><em>ideal Tuesday.</em></h2>
+      <p>Not your vacation. Not your best day ever. Your ideal ordinary Tuesday — the kind of day that, if you had it every week, would make you feel like your life is working.</p>
+
+      <div class="exercise">
+        <span class="exercise__label">Write it out</span>
+        <h3>Your ideal Tuesday</h3>
+        <p>What time do you wake up? Where do you go first? What do you do in the morning, afternoon, evening? Who are you around? What does it feel like?</p>
+        <textarea class="wb-textarea" style="min-height:140px" placeholder="Walk me through your day..."></textarea>
+      </div>
+
+      <div class="exercise">
+        <span class="exercise__label">Now extract the clues</span>
+        <h3>What does your Tuesday require?</h3>
+        <p>Check everything your ideal day actually needs to exist:</p>
+        <div class="check-grid">
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Walkable neighborhood</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Near the ocean</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Mountains or hiking</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Good coffee culture</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Quiet and private</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Vibrant city energy</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Good schools nearby</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Year-round warm weather</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Seasons (actual winter)</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Short commute or WFH</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Food and restaurant scene</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Arts and culture</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Space and land</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Close to family</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Low cost of living</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>Political alignment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 2 -->
+    <div class="wb-section">
+      <span class="section-label">Exercise 02</span>
+      <h2>What are you<br/><em>actually leaving?</em></h2>
+      <p>Most people know what they're moving toward. Fewer have been honest about what they're moving away from. Both matter — because if you don't name the thing you're escaping, you'll often recreate it somewhere new.</p>
+
+      <div class="exercise">
+        <span class="exercise__label">Be honest</span>
+        <h3>What's not working about where you live now?</h3>
+        <p>Write freely. This isn't about complaining — it's about clarity.</p>
+        <textarea class="wb-textarea" style="min-height:100px" placeholder="What are you done with? What's grinding you down?"></textarea>
+      </div>
+
+      <div class="exercise">
+        <span class="exercise__label">Now check yourself</span>
+        <h3>Is this fixable without moving?</h3>
+        <p>Sometimes the thing we think is about location is actually about something else — job, relationship, routine. Answer honestly:</p>
+        <div class="check-grid">
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>The cost of living is the issue</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>I want a different pace of life</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>The weather is genuinely bad for me</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>I want to be closer to nature</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>I don't feel like myself here anymore</div>
+          <div class="check-item" onclick="this.classList.toggle('selected')"><div class="box"></div>I want a fresh start entirely</div>
+        </div>
+      </div>
+
+      <div class="aja-tip">
+        <span class="aja-tip__label">Aja's take</span>
+        <p>The most common regret I see: people move for the wrong reason and bring the problem with them. If the issue is your job, moving cities might not fix it. But if you genuinely want a different kind of life — slower, warmer, more outdoors, more affordable — that's a location problem, and moving solves it.</p>
+      </div>
+    </div>
+
+    <!-- Exercise 3 -->
+    <div class="wb-section">
+      <span class="section-label">Exercise 03</span>
+      <h2>Rate what<br/><em>matters most to you.</em></h2>
+      <p>Drag each slider to reflect how important each factor is in your decision. Be honest — not aspirational. Rate for your real life, not the version of yourself you're trying to become.</p>
+
+      <div class="exercise">
+        <span class="exercise__label">Priority sliders</span>
+        <h3>How important is each factor?</h3>
+        <div class="slider-row">
+          <div class="slider-item">
+            <label>Cost of living <span id="v1">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v1').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+          <div class="slider-item">
+            <label>Weather / climate <span id="v2">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v2').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+          <div class="slider-item">
+            <label>Proximity to family <span id="v3">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v3').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+          <div class="slider-item">
+            <label>School quality <span id="v4">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v4').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+          <div class="slider-item">
+            <label>Outdoor access (hiking, beach, skiing) <span id="v5">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v5').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+          <div class="slider-item">
+            <label>City energy / culture / food <span id="v6">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v6').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+          <div class="slider-item">
+            <label>Safety and community <span id="v7">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v7').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+          <div class="slider-item">
+            <label>Career or business opportunity <span id="v8">5</span>/10</label>
+            <input type="range" min="1" max="10" value="5" oninput="document.getElementById('v8').textContent=this.value">
+            <div class="slider-ends"><span>Doesn't matter</span><span>Non-negotiable</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 4 -->
+    <div class="wb-section">
+      <span class="section-label">Exercise 04</span>
+      <h2>Compare your<br/><em>top cities.</em></h2>
+      <p>Write in up to three cities you're seriously considering — then score each one honestly against your priorities from Exercise 03. Use 1–10. Be brutal.</p>
+
+      <div class="exercise">
+        <span class="exercise__label">Your shortlist</span>
+        <h3>Name your cities</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+          <input style="flex:1;min-width:140px;padding:12px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:var(--sans);font-size:14px" placeholder="City 1">
+          <input style="flex:1;min-width:140px;padding:12px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:var(--sans);font-size:14px" placeholder="City 2">
+          <input style="flex:1;min-width:140px;padding:12px 14px;border:1.5px solid #ddd;border-radius:3px;font-family:var(--sans);font-size:14px" placeholder="City 3">
+        </div>
+        <p>Now go back to your priority scores from Exercise 03. For each city, write a score next to each factor. Which city wins?</p>
+        <textarea class="wb-textarea" style="min-height:120px" placeholder="e.g. San Diego: cost 4/10, weather 10/10, schools 8/10... Austin: cost 7/10, weather 6/10..."></textarea>
+      </div>
+
+      <div class="aja-tip">
+        <span class="aja-tip__label">Aja's take</span>
+        <p>The city that scores highest on paper is rarely the obvious winner. More often, one or two factors dominate everything else. When I work with relocating clients, I always ask: "If you could only keep one thing from your list, what would it be?" That answer usually tells you more than any spreadsheet.</p>
+      </div>
+    </div>
+
+    <!-- Exercise 5 -->
+    <div class="wb-section">
+      <span class="section-label">Exercise 05</span>
+      <h2>The deal-breaker<br/><em>test.</em></h2>
+      <p>This is the last filter. For each city still on your list, answer these honestly. If any answer gives you a sick feeling — that's information.</p>
+
+      <div class="exercise">
+        <span class="exercise__label">For each city on your list</span>
+        <h3>Answer these questions</h3>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div>
+            <p style="font-weight:600;margin-bottom:6px">1. Can you afford to live here the way you want to live — not just to survive?</p>
+            <textarea class="wb-textarea" placeholder="Be specific about what your life costs there vs. what you'd earn or have..."></textarea>
+          </div>
+          <div>
+            <p style="font-weight:600;margin-bottom:6px">2. Have you spent more than a long weekend there?</p>
+            <textarea class="wb-textarea" placeholder="A week in an Airbnb in a real neighborhood tells you more than ten research hours..."></textarea>
+          </div>
+          <div>
+            <p style="font-weight:600;margin-bottom:6px">3. Do you know at least one person there who loves living there?</p>
+            <textarea class="wb-textarea" placeholder="A local contact changes everything about your understanding of a place..."></textarea>
+          </div>
+          <div>
+            <p style="font-weight:600;margin-bottom:6px">4. If nothing about the house was perfect but the city was right — would you still move?</p>
+            <textarea class="wb-textarea" placeholder="This tells you how much the location itself matters vs. the specific property..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What next -->
+    <div class="wb-section">
+      <span class="section-label">What Now</span>
+      <h2>You have clarity.<br/><em>Now what?</em></h2>
+      <p>If you've worked through this honestly, you have something most people making major moves don't: a clear picture of what you need and why. That's the hard part. The rest is execution.</p>
+
+      <div class="score-card">
+        <div class="score-card__num">01</div>
+        <div>
+          <h4>Visit before you decide</h4>
+          <p>Spend at least 5 days in your top city — not as a tourist. Rent in a real neighborhood. Shop at the grocery store. Drive the commute. Sit in a coffee shop on a Tuesday morning.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-card__num">02</div>
+        <div>
+          <h4>Get the right Realtor first</h4>
+          <p>Not just any agent — someone who knows the neighborhoods you're considering and will give you honest opinions. Ask them what they'd tell their own family member about this move.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-card__num">03</div>
+        <div>
+          <h4>Tell Aja where you're headed</h4>
+          <p>If you're moving somewhere in the U.S., I'll personally introduce you to the agent I'd call. No lead marketplace, no cold introductions — just the right person for your situation. My concierge service is completely free to you.</p>
+        </div>
+      </div>
+      <div class="score-card">
+        <div class="score-card__num">04</div>
+        <div>
+          <h4>Rent first, then buy</h4>
+          <p>Renting can be a short-term landing pad. But owning roots you into your community — it builds equity, it creates stability, and it lets you actually make a home that reflects how you want to live. Most of my clients who relocated happiest did it in that order.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="wb-cta">
+      <h2>Know where you're going.<br/><em>Let's get you there.</em></h2>
+      <p>Whether it's San Diego or somewhere else entirely — I'll help you figure out the next step.</p>
+      <div class="wb-cta__actions">
+        <div class="wb-cta__qr">
+          <canvas id="cta-qr" width="160" height="160"></canvas>
+          <span>Scan to book a 15-min call</span>
+        </div>
+        <div class="wb-cta__lines">
+          <a class="wb-cta__btn" href="https://calendly.com/coasthomes/discoverycall" target="_blank" rel="noopener">Book a 15-min call →</a>
+          <div class="wb-cta__contact">
+            <div><span>Calendar</span><a href="https://calendly.com/coasthomes/discoverycall">calendly.com/coasthomes/discoverycall</a></div>
+            <div><span>Email</span><a href="mailto:Aja@coasthomesbyaja.com">Aja@coasthomesbyaja.com</a></div>
+            <div><span>Text or call</span><a href="tel:+13237919587">(323) 791-9587</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('gate-form');
+  const btn = document.getElementById('gate-btn');
+  const errorEl = document.getElementById('gate-error');
+  const gate = document.getElementById('gate');
+  const workbook = document.getElementById('workbook');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    errorEl.style.display = 'none';
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      guide: 'Lifestyle Relocation Workbook',
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/xdaywppb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        gate.style.display = 'none';
+        workbook.classList.add('visible');
+        window.scrollTo(0, 0);
+      } else {
+        throw new Error();
+      }
+    } catch {
+      errorEl.textContent = 'Something went wrong — please try again or email Aja@coasthomesbyaja.com';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Get the workbook →';
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<script>
+  // Render the CTA QR code pointing to the booking calendar.
+  function renderCtaQr() {
+    const canvas = document.getElementById('cta-qr');
+    if (!canvas || typeof qrcode !== 'function') return;
+    const url = 'https://calendly.com/coasthomes/discoverycall';
+    const qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    const size = canvas.width;
+    const count = qr.getModuleCount();
+    const cell = size / count;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = '#0a1520';
+    for (let r = 0; r < count; r++) {
+      for (let c = 0; c < count; c++) {
+        if (qr.isDark(r, c)) {
+          ctx.fillRect(Math.floor(c * cell), Math.floor(r * cell), Math.ceil(cell), Math.ceil(cell));
+        }
+      }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderCtaQr);
+  } else {
+    renderCtaQr();
+  }
+  window.addEventListener('beforeprint', renderCtaQr);
+</script>
+</body>
+</html>

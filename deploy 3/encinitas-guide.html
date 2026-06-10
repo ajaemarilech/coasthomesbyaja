@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Encinitas Local's Guide — Coast Homes by Aja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0d1f29;
+      --paper: #faf9f5;
+      --teal: #4a9e8a;
+      --teal-light: #e8f4f1;
+      --sand: #c9b99a;
+      --muted: #6b7a85;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter Tight', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── GATE ── */
+    #gate {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    #gate::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/hero-beach.webp') center/cover no-repeat;
+      opacity: 0.22;
+    }
+    .gate__box {
+      position: relative;
+      background: var(--paper);
+      border-radius: 4px;
+      padding: 56px 48px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .gate__eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .gate__title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .gate__title em { font-style: italic; color: var(--teal); }
+    .gate__sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .gate__bullets {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .gate__bullets li {
+      font-size: 13px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--ink);
+    }
+    .gate__bullets li::before {
+      content: '→';
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .gate__form { display: flex; flex-direction: column; gap: 12px; }
+    .gate__form input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #ddd;
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 14px;
+      background: #fff;
+      color: var(--ink);
+      transition: border-color .2s;
+    }
+    .gate__form input:focus { outline: none; border-color: var(--teal); }
+    .gate__submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .gate__submit:hover { background: var(--teal); }
+    .gate__submit:disabled { opacity: .6; cursor: not-allowed; }
+    .gate__privacy {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .gate__error {
+      color: #c0392b;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    /* ── GUIDE ── */
+    #guide { display: none; }
+    #guide.visible { display: block; }
+
+    .guide-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* Cover */
+    .guide-cover {
+      min-height: 100vh;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 64px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .guide-cover__bg {
+      position: absolute;
+      inset: 0;
+      background: url('assets/hero-beach.webp') center/cover no-repeat;
+      opacity: 0.45;
+    }
+    .guide-cover__content { position: relative; color: #fff; }
+    .guide-cover__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .guide-cover h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .guide-cover h1 em { font-style: italic; color: var(--sand); }
+    .guide-cover__sub {
+      font-size: 16px;
+      color: rgba(255,255,255,.7);
+      max-width: 480px;
+      line-height: 1.5;
+    }
+    .guide-cover__byline {
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .guide-cover__byline img {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,.3);
+    }
+    .guide-cover__byline-text { font-size: 13px; color: rgba(255,255,255,.7); }
+    .guide-cover__byline-text strong { display: block; color: #fff; font-weight: 600; }
+
+    /* Sections */
+    .guide-section {
+      padding: 72px 0 40px;
+      border-bottom: 1px solid #e8e4dc;
+    }
+    .guide-section:last-child { border-bottom: none; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .guide-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .guide-section h2 em { font-style: italic; }
+    .guide-section h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      margin: 32px 0 12px;
+    }
+    .guide-section p {
+      color: #3a4a55;
+      line-height: 1.75;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    .guide-section p:last-child { margin-bottom: 0; }
+
+    /* ── PHOTOGRAPHY ── */
+    .guide-figure {
+      margin: 36px 0;
+    }
+    .guide-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .guide-figure figcaption {
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .guide-figure figcaption::before {
+      content: '— ';
+      color: var(--teal);
+    }
+    .guide-figure--tall img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+    /* Two-up photo strip */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 36px 0;
+    }
+    .photo-strip figure { margin: 0; }
+    .photo-strip img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .photo-strip figcaption {
+      margin-top: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Full-width dreamy breaker */
+    .photo-breaker {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 56px 0;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+    }
+    .photo-breaker img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-breaker::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,31,41,0) 35%, rgba(13,31,41,.72) 100%);
+    }
+    .photo-breaker__text {
+      position: relative;
+      z-index: 2;
+      padding: 40px 44px;
+      color: #fff;
+    }
+    .photo-breaker__text p {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3.4vw, 30px);
+      font-style: italic;
+      line-height: 1.3;
+      color: #fff;
+      margin: 0;
+      max-width: 520px;
+      text-wrap: pretty;
+    }
+    .photo-breaker__text span {
+      display: block;
+      margin-top: 12px;
+      font-family: var(--sans);
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sand);
+    }
+    @media (max-width: 600px) {
+      .photo-strip { grid-template-columns: 1fr; }
+      .photo-breaker { min-height: 300px; }
+      .photo-breaker__text { padding: 28px 24px; }
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--teal);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: var(--teal-light);
+      border-radius: 0 3px 3px 0;
+    }
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Grid cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e8e4dc;
+      border-radius: 3px;
+      padding: 24px;
+    }
+    .card h4 {
+      font-family: var(--serif);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .card p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+    .card .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    /* List */
+    .guide-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .guide-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .guide-list li .num {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--teal);
+      flex-shrink: 0;
+      width: 24px;
+    }
+
+    /* Aja tip box */
+    .aja-tip {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 3px;
+      padding: 28px 32px;
+      margin: 32px 0;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .aja-tip__label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .aja-tip p { font-size: 14px; color: rgba(255,255,255,.85); margin: 0; line-height: 1.6; }
+
+    /* CTA section */
+    .guide-cta {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 4px;
+      padding: 48px;
+      margin-top: 64px;
+    }
+    .guide-cta h2 {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .guide-cta h2 em { font-style: italic; }
+    .guide-cta > p { color: rgba(255,255,255,.85); margin-bottom: 32px; max-width: 520px; }
+    .guide-cta__actions {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .guide-cta__qr {
+      background: #fff;
+      padding: 16px 16px 12px;
+      border-radius: 4px;
+      text-align: center;
+      width: max-content;
+    }
+    .guide-cta__qr canvas { display: block; width: 160px; height: 160px; }
+    .guide-cta__qr span {
+      display: block;
+      margin-top: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .guide-cta__lines { display: flex; flex-direction: column; gap: 20px; }
+    .guide-cta__btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--ink);
+      padding: 14px 28px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: .04em;
+      width: max-content;
+    }
+    .guide-cta__contact {
+      display: grid;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .guide-cta__contact > div { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: baseline; }
+    .guide-cta__contact span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+    }
+    .guide-cta__contact a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.3);
+      padding-bottom: 1px;
+    }
+    @media (max-width: 600px) {
+      .guide-cta { padding: 32px 24px; }
+      .guide-cta__actions { grid-template-columns: 1fr; gap: 24px; }
+      .guide-cta__qr { margin: 0 auto; }
+      .guide-cta__contact > div { grid-template-columns: 1fr; gap: 2px; }
+    }
+
+    @media (max-width: 600px) {
+      .gate__box { padding: 36px 24px; }
+      .guide-cover { padding: 40px 24px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .aja-tip { flex-direction: column; gap: 12px; }
+    }
+
+    /* ── SAVE / PRINT TOOLBAR ── */
+    .guide-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .guide-toolbar__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+    }
+    .guide-toolbar__actions { display: flex; gap: 10px; }
+    .guide-toolbar__btn {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .guide-toolbar__btn:hover { background: #3d8474; transform: translateY(-1px); }
+    .guide-toolbar__btn--ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+    .guide-toolbar__btn--ghost:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+    .guide-toolbar__btn svg { width: 14px; height: 14px; }
+    @media (max-width: 600px) {
+      .guide-toolbar { padding: 12px 16px; flex-wrap: wrap; }
+      .guide-toolbar__label { font-size: 10px; flex: 1 0 100%; }
+      .guide-toolbar__btn { padding: 9px 14px; font-size: 12px; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      /* Force background colors and images to print */
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      /* Page setup with running header + footer + page numbers */
+      @page {
+        size: letter;
+        margin: 0.7in 0.75in 0.85in;
+        @bottom-center {
+          content: "Coast Homes by Aja  ·  The Encinitas Local's Guide";
+          font-family: 'Inter Tight', system-ui, sans-serif;
+          font-size: 8.5pt;
+          letter-spacing: .08em;
+          color: #6b7a85;
+          padding-top: 12pt;
+        }
+        @bottom-right {
+          content: counter(page) " / " counter(pages);
+          font-family: 'Inter Tight', system-ui, sans-serif;
+          font-size: 8.5pt;
+          color: #6b7a85;
+          padding-top: 12pt;
+        }
+      }
+
+      /* Cover page has no header/footer */
+      @page :first {
+        margin: 0;
+        @bottom-center { content: ""; }
+        @bottom-right { content: ""; }
+      }
+
+      html, body {
+        background: var(--paper) !important;
+        color: var(--ink) !important;
+        font-family: var(--sans);
+        font-size: 10.5pt;
+        line-height: 1.6;
+      }
+
+      /* Hide UI chrome */
+      #gate, .guide-toolbar { display: none !important; }
+      #guide { display: block !important; }
+
+      /* ── COVER (first page, full-bleed dark) ── */
+      .guide-cover {
+        min-height: 100vh;
+        height: 11in;
+        width: 8.5in;
+        margin: 0 !important;
+        padding: 1in 0.9in !important;
+        background: var(--ink) !important;
+        color: #fff !important;
+        page-break-after: always;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+      }
+      .guide-cover__bg {
+        background-image: url('assets/hero-beach.webp') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        opacity: 0.32 !important;
+      }
+      .guide-cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(13,31,41,0.4) 0%, rgba(13,31,41,0.92) 100%);
+      }
+      .guide-cover__content {
+        position: relative;
+        z-index: 2;
+        color: #fff !important;
+        max-width: 6.2in;
+      }
+      .guide-cover__label {
+        color: var(--sand) !important;
+        font-size: 9pt !important;
+        letter-spacing: .18em !important;
+      }
+      .guide-cover h1 {
+        font-size: 64pt !important;
+        line-height: 0.95 !important;
+        color: #fff !important;
+        margin-bottom: 18pt !important;
+      }
+      .guide-cover h1 em { color: var(--sand) !important; }
+      .guide-cover__sub {
+        color: rgba(255,255,255,.78) !important;
+        font-size: 13pt !important;
+        max-width: 5in !important;
+      }
+      .guide-cover__byline { margin-top: 32pt !important; }
+      .guide-cover__byline img {
+        width: 42pt !important;
+        height: 42pt !important;
+        border-color: rgba(255,255,255,.4) !important;
+      }
+      .guide-cover__byline-text { color: rgba(255,255,255,.75) !important; font-size: 10pt !important; }
+      .guide-cover__byline-text strong { color: #fff !important; }
+
+      /* ── BODY ── */
+      .guide-wrap {
+        max-width: none !important;
+        padding: 0 !important;
+      }
+
+      .guide-section {
+        padding: 24pt 0 16pt !important;
+        border-bottom: 0.5pt solid #e0d9cb !important;
+        page-break-inside: auto;
+      }
+      .guide-section:first-of-type { padding-top: 0 !important; }
+      .guide-section:last-child { border-bottom: none !important; }
+
+      .section-label {
+        color: var(--teal) !important;
+        font-size: 8.5pt !important;
+        letter-spacing: .2em !important;
+        margin-bottom: 10pt !important;
+      }
+
+      .guide-section h2 {
+        font-family: var(--serif);
+        font-size: 28pt !important;
+        line-height: 1.08 !important;
+        font-weight: 400;
+        margin-bottom: 16pt !important;
+        page-break-after: avoid;
+        color: var(--ink) !important;
+      }
+      .guide-section h2 em { color: var(--teal) !important; font-style: italic; }
+
+      .guide-section h3 {
+        font-family: var(--serif);
+        font-size: 15pt !important;
+        font-weight: 500;
+        margin: 18pt 0 8pt !important;
+        page-break-after: avoid;
+      }
+
+      .guide-section p {
+        font-size: 10.5pt !important;
+        line-height: 1.65 !important;
+        color: #2a3741 !important;
+        margin-bottom: 10pt !important;
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* Photography in print */
+      .guide-figure {
+        margin: 18pt 0 !important;
+        page-break-inside: avoid;
+      }
+      .guide-figure img {
+        border-radius: 2pt !important;
+        max-height: 4.2in;
+        object-fit: cover;
+        width: 100% !important;
+      }
+      .guide-figure figcaption {
+        font-size: 7.5pt !important;
+        margin-top: 5pt !important;
+        color: var(--muted) !important;
+      }
+      .photo-strip {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+        margin: 18pt 0 !important;
+        page-break-inside: avoid;
+      }
+      .photo-strip img { border-radius: 2pt !important; }
+      .photo-strip figcaption { font-size: 7pt !important; margin-top: 4pt !important; }
+      .photo-breaker {
+        margin: 24pt 0 !important;
+        min-height: 3.2in !important;
+        border-radius: 2pt !important;
+        page-break-inside: avoid;
+      }
+      .photo-breaker__text { padding: 22pt 26pt !important; }
+      .photo-breaker__text p { font-size: 17pt !important; color: #fff !important; }
+      .photo-breaker__text span { color: var(--sand) !important; font-size: 7pt !important; }
+
+      /* Pull quotes — keep the editorial teal block */
+      .pull-quote {
+        background: var(--teal-light) !important;
+        border-left: 3pt solid var(--teal) !important;
+        padding: 14pt 18pt !important;
+        margin: 18pt 0 !important;
+        page-break-inside: avoid;
+      }
+      .pull-quote p {
+        font-family: var(--serif);
+        font-size: 14pt !important;
+        font-style: italic;
+        color: var(--ink) !important;
+        line-height: 1.45 !important;
+        margin: 0 !important;
+      }
+
+      /* Cards grid — flatten and tighten */
+      .grid-2 {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+        margin: 14pt 0 !important;
+      }
+      .card {
+        background: #fff !important;
+        border: 0.5pt solid #d9d2c1 !important;
+        padding: 14pt !important;
+        page-break-inside: avoid;
+      }
+      .card h4 { font-family: var(--serif); font-size: 13pt !important; margin-bottom: 4pt !important; }
+      .card p { font-size: 9.5pt !important; color: var(--muted) !important; line-height: 1.45 !important; }
+      .card .tag { color: var(--teal) !important; font-size: 8pt !important; }
+
+      /* Lists */
+      .guide-list {
+        margin: 14pt 0 !important;
+        gap: 7pt !important;
+      }
+      .guide-list li {
+        font-size: 10.5pt !important;
+        page-break-inside: avoid;
+      }
+      .guide-list li .num {
+        color: var(--teal) !important;
+        font-size: 14pt !important;
+      }
+
+      /* Aja tip — keep dark callout */
+      .aja-tip {
+        background: var(--ink) !important;
+        color: #fff !important;
+        padding: 18pt 22pt !important;
+        margin: 18pt 0 !important;
+        page-break-inside: avoid;
+        gap: 16pt !important;
+      }
+      .aja-tip__label {
+        color: var(--sand) !important;
+        font-size: 8pt !important;
+      }
+      .aja-tip p {
+        color: rgba(255,255,255,.88) !important;
+        font-size: 10pt !important;
+        line-height: 1.55 !important;
+      }
+
+      /* CTA section at the end */
+      .guide-cta {
+        background: var(--teal) !important;
+        color: #fff !important;
+        padding: 28pt !important;
+        margin-top: 32pt !important;
+        page-break-inside: avoid;
+      }
+      .guide-cta h2 {
+        font-family: var(--serif);
+        font-size: 22pt !important;
+        color: #fff !important;
+        margin-bottom: 6pt !important;
+      }
+      .guide-cta > p { color: rgba(255,255,255,.88) !important; font-size: 10.5pt !important; margin-bottom: 18pt !important; max-width: 360pt !important; }
+      .guide-cta__actions {
+        display: grid !important;
+        grid-template-columns: auto 1fr !important;
+        gap: 24pt !important;
+        align-items: center !important;
+      }
+      .guide-cta__qr {
+        background: #fff !important;
+        padding: 10pt 10pt 8pt !important;
+        border-radius: 2pt !important;
+        text-align: center !important;
+      }
+      .guide-cta__qr canvas { width: 120pt !important; height: 120pt !important; display: block !important; }
+      .guide-cta__qr span {
+        display: block !important;
+        margin-top: 5pt !important;
+        font-size: 7pt !important;
+        font-weight: 600 !important;
+        letter-spacing: .1em !important;
+        text-transform: uppercase !important;
+        color: var(--ink) !important;
+      }
+      .guide-cta__lines { display: flex !important; flex-direction: column !important; gap: 14pt !important; }
+      .guide-cta__btn {
+        display: inline-block !important;
+        background: #fff !important;
+        color: var(--ink) !important;
+        padding: 9pt 18pt !important;
+        font-size: 10pt !important;
+        font-weight: 600 !important;
+        width: max-content !important;
+        text-decoration: none !important;
+      }
+      .guide-cta__contact { display: grid !important; gap: 6pt !important; font-size: 9.5pt !important; }
+      .guide-cta__contact > div { display: grid !important; grid-template-columns: 62pt 1fr !important; gap: 8pt !important; }
+      .guide-cta__contact span {
+        font-size: 7.5pt !important;
+        font-weight: 600 !important;
+        letter-spacing: .14em !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,.65) !important;
+      }
+      .guide-cta__contact a {
+        color: #fff !important;
+        text-decoration: none !important;
+        border-bottom: .5pt solid rgba(255,255,255,.35) !important;
+      }
+
+      /* General print hygiene */
+      a { color: var(--ink); text-decoration: none; }
+      img { max-width: 100%; }
+      h1, h2, h3, h4 { page-break-after: avoid; }
+      p, li { orphans: 3; widows: 3; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- GATE -->
+<div id="gate">
+  <div class="gate__box">
+    <span class="gate__eyebrow">Free Guide · Encinitas, CA</span>
+    <h1 class="gate__title">The Encinitas <em>Local's</em> Guide</h1>
+    <p class="gate__sub">Skip the tourist version. This is what living here actually looks like — from someone who sells it every day.</p>
+    <ul class="gate__bullets">
+      <li>The neighborhoods locals actually argue about</li>
+      <li>Best coffee, surf breaks, and farmers markets</li>
+      <li>School district breakdown — honest, not promotional</li>
+      <li>Which streets get the morning light (it matters)</li>
+      <li>What I tell every buyer before their first showing</li>
+    </ul>
+    <form class="gate__form" id="gate-form">
+      <input type="text" name="name" placeholder="Your full name" required autocomplete="name">
+      <input type="email" name="email" placeholder="Your email address" required autocomplete="email">
+      <button type="submit" class="gate__submit" id="gate-btn">Get the guide →</button>
+      <div class="gate__error" id="gate-error" style="display:none"></div>
+    </form>
+    <p class="gate__privacy">No spam. No lead marketplace. Just a guide from someone who actually lives here.</p>
+  </div>
+</div>
+
+<!-- GUIDE (unlocked after form submit) -->
+<div id="guide">
+
+  <!-- Save / Print toolbar -->
+  <div class="guide-toolbar">
+    <span class="guide-toolbar__label">The Encinitas Local's Guide · 48 pages</span>
+    <div class="guide-toolbar__actions">
+      <button class="guide-toolbar__btn" onclick="window.print()" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Save as PDF
+      </button>
+      <button class="guide-toolbar__btn guide-toolbar__btn--ghost" onclick="window.print()" type="button">
+        Print
+      </button>
+    </div>
+  </div>
+
+  <!-- Cover -->
+  <div class="guide-cover">
+    <div class="guide-cover__bg"></div>
+    <div class="guide-cover__content">
+      <span class="guide-cover__label">Coast Homes by Aja · Encinitas, CA · 92024</span>
+      <h1>The Encinitas<br/><em>Local's</em> Guide</h1>
+      <p class="guide-cover__sub">Skip the tourist version. This is what living here actually looks like.</p>
+      <div class="guide-cover__byline">
+        <img src="assets/aja-headshot.png" alt="Aja Lechowicz">
+        <div class="guide-cover__byline-text">
+          <strong>Aja Lechowicz</strong>
+          San Diego Realtor · DRE #01918735 · Est. 2011
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-wrap">
+
+    <!-- Intro -->
+    <div class="guide-section">
+      <span class="section-label">Introduction</span>
+      <h2>What no listing<br/><em>description tells you</em></h2>
+      <p>Every listing description says the same things. "Steps to the beach." "Coastal breeze." "Charming neighborhood." They're not wrong — they're just incomplete.</p>
+      <p>After fourteen years selling homes on this coast, I know the things that don't make it into the MLS. Which beaches the locals actually go to — and which ones they avoid. Which coffee shop is worth the wait and which one is just Instagram bait.</p>
+      <p>This guide is what I tell my clients over coffee, before we ever see a single home. Read it once. You'll show up to Encinitas knowing it like a local.</p>
+      <figure class="guide-figure">
+        <img src="assets/hero-stairs.jpg" alt="Wooden beach stairs leading down to the sand and surf in Encinitas" style="aspect-ratio: 3 / 2; object-fit: cover; object-position: center 60%;">
+        <figcaption>The walk down to the sand. Most mornings, you'll have it almost to yourself.</figcaption>
+      </figure>
+      <p>And if you've never been: Encinitas smells like eucalyptus and salt air. Surfboards ride shotgun on cruiser bikes. The train horn rolls through at dusk, and somehow it makes the whole town feel quieter. That's the part no photo gets quite right — but the photos in this guide come close.</p>
+      <div class="pull-quote">
+        <p>"The right neighborhood isn't just about the house. It's about who you'll become after you move in."</p>
+      </div>
+    </div>
+
+    <!-- Is this for you -->
+    <div class="guide-section">
+      <span class="section-label">Before You Go Deeper</span>
+      <h2>Is Encinitas<br/><em>actually for you?</em></h2>
+      <p>Not every buyer fits this town — and that's a good thing. Here's the honest self-check:</p>
+      <ul class="guide-list">
+        <li><span class="num">01</span><span>You want a slower, more intentional pace of life.</span></li>
+        <li><span class="num">02</span><span>You care about community — but not the performative kind.</span></li>
+        <li><span class="num">03</span><span>Wellness, nature, or family are high on your priority list.</span></li>
+        <li><span class="num">04</span><span>You'd trade square footage for walkability and ocean air.</span></li>
+        <li><span class="num">05</span><span>You're choosing peace over hustle — and you want your home to reflect that.</span></li>
+      </ul>
+      <p>If most of those land, Encinitas is likely calling. If they don't — I know this county well, and there's probably a better fit for you somewhere else in San Diego. Either way, let's talk.</p>
+      <figure class="guide-figure">
+        <img src="assets/bluff-overlook.jpg" alt="Looking south along the Encinitas coastline from the bluff, surfers dotting the water below" style="aspect-ratio: 16 / 9; object-fit: cover;">
+        <figcaption>The view from the bluff, looking south. This is the commute to nowhere.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Neighborhoods -->
+    <div class="guide-section">
+      <span class="section-label">The Neighborhoods</span>
+      <h2>Encinitas isn't one place.<br/>It's <em>five</em>.</h2>
+      <p>Most buyers come in thinking "Encinitas" is one thing. It's not. Here's how I break it down:</p>
+      <figure class="guide-figure">
+        <img src="assets/coast-aerial.jpg" alt="Aerial view of the Encinitas coastline — bluffs, beach, and neighborhoods stretching north" style="aspect-ratio: 16 / 9; object-fit: cover;">
+        <figcaption>Five neighborhoods, one coastline — looking north over the bluffs of 92024.</figcaption>
+      </figure>
+
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag">Old Encinitas</span>
+          <h4>The Original</h4>
+          <p>Walkable, eclectic, full of character. Older homes, smaller lots, but you can walk to everything. Best for: buyers who want soul over square footage.</p>
+        </div>
+        <div class="card">
+          <span class="tag">New Encinitas</span>
+          <h4>The Family Zone</h4>
+          <p>More square footage, newer builds, great for growing families. The tradeoff: less personality than Leucadia or Old Town. Best for: buyers who prioritize space over vibe.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Leucadia</span>
+          <h4>The Surf Town</h4>
+          <p>Loose, creative, community-first. Street art, some of the best local restaurants on the coast. Best for: buyers who want culture and don't need a HOA telling them what color to paint their fence.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Cardiff</span>
+          <h4>The Secret</h4>
+          <p>Tucked below the 101, lagoon views, incredible sunsets. Often overlooked, never disappointed. Best for: buyers who want views, quiet, and the kind of neighborhood where people actually know each other.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:0">
+        <span class="tag">Olivenhain</span>
+        <h4>The Ranch</h4>
+        <p>Equestrian community, larger lots, horses welcome. Quiet, private, and surprisingly close to everything. Best for: buyers who want space and don't need to be walkable to anything.</p>
+      </div>
+
+      <div class="aja-tip">
+        <div>
+          <span class="aja-tip__label">Aja's take</span>
+          <p>Most buyers say they want "Old Encinitas vibes" but then buy in New Encinitas because of the space. Neither choice is wrong — but knowing the tradeoff upfront saves a lot of second-guessing. Ask me which one matches your actual life, not just your Pinterest board.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schools -->
+    <div class="guide-section">
+      <span class="section-label">Schools</span>
+      <h2>The honest<br/><em>school breakdown</em></h2>
+      <p>Encinitas sits in the Encinitas Union School District (K–6) and the San Dieguito Union High School District (7–12). Both are genuinely good. Here's what nobody tells you:</p>
+
+      <ul class="guide-list">
+        <li><span class="num">01</span><span><strong>School of Choice matters.</strong> The Encinitas USD has a school of choice program. Your address puts you in a default school, but you can apply for others. Most families don't realize this until after they've already bought.</span></li>
+        <li><span class="num">02</span><span><strong>Three public high schools, three very different experiences.</strong> San Dieguito Academy (SDA) is one of the top public schools in California — exceptional college placement, and the kind of place where your kid can take Surf PE, Culinary Arts, or Drama alongside AP classes. La Costa Canyon is the classic high school experience: Friday night football, strong athletics, big school energy. Canyon Crest Academy leans academic and arts-focused, with a smaller, more intentional feel.</span></li>
+        <li><span class="num">03</span><span><strong>Private + alternative options worth a look.</strong> Sanderling Waldorf, The Grauer School, and Encinitas Country Day all offer creative, values-driven alternatives. St. John the Evangelist is the local Catholic school option. Pacific Ridge School (K–12) is excellent and worth a tour if you're open to independent schools.</span></li>
+        <li><span class="num">04</span><span><strong>All the public schools here are genuinely good.</strong> Don't let the district boundary research stress you out too much — the whole area is well-served. That said, always verify the specific address before making an offer.</span></li>
+        <li><span class="num">05</span><span><strong>Two standout public elementary programs: Paul Ecke Central and Capri Elementary</strong> both offer an amazing dual language program in Spanish and English — a rare and valuable option if that matters to your family.</span></li>
+      </ul>
+
+      <div class="aja-tip">
+        <div>
+          <span class="aja-tip__label">Aja's take</span>
+          <p>Honestly, you can't go wrong with schools here. But the dual language programs, the school of choice options, the high school personalities — that's the stuff worth knowing before you choose a neighborhood. Ask me anything.</p>
+        </div>
+      </div>
+      <figure class="guide-figure">
+        <img src="assets/beach-run-golden-hour.jpg" alt="A parent and child running along the cobblestone shoreline at golden hour in Encinitas" style="aspect-ratio: 16 / 9; object-fit: cover;">
+        <figcaption>After-school pickup, Encinitas version.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Daily life -->
+    <div class="guide-section">
+      <span class="section-label">Daily Life</span>
+      <h2>Coffee, surf,<br/>and <em>everything in between</em></h2>
+      <figure class="guide-figure">
+        <img src="assets/encinitas-sign.jpg" alt="The Encinitas sign arching over Coast Highway 101 at sunset" style="aspect-ratio: 16 / 9; object-fit: cover; object-position: center 35%;">
+        <figcaption>The sign over the 101 at D Street. Everything in this section is a short walk from it.</figcaption>
+      </figure>
+
+      <h3>Coffee worth the line</h3>
+      <p><strong>Necessity Coffee</strong> — Old Encinitas' neighborhood favorite. Some of the best quality coffee you'll find, and a staff that goes out of their way to learn your name and your drink. <strong>Ironsmith Coffee Roasters</strong> — Veteran-owned, small-batch roastery right on Coast Highway 101. Narrow, casual, a roll-up garage door for a front wall. The kind of place that's been an Encinitas staple for years and doesn't need to announce it. <strong>Goodonya</strong> — For the health-conscious crowd. Golden milk lattes, organic everything, and a genuinely good breakfast. Worth knowing about. <strong>Pannikin</strong> — The Leucadia institution. Housed in a historic bright yellow former railroad depot building, outdoor seating, and great coffee.</p>
+
+      <h3>Farmers Markets</h3>
+      <p>The <strong>Leucadia Farmers Market</strong> (Sundays, 10am–2pm) is one of the best on the coast — and not just for produce. Fresh-cut flowers, high quality meats, specialty products, incredible food vendors for lunch, and face painting for the kids. The kind of Sunday morning that makes you feel like you already live here.</p>
+
+      <h3>Surf</h3>
+      <figure class="guide-figure">
+        <img src="assets/surf-lineup.jpg" alt="The evening lineup at an Encinitas surf break, seen from the bluff through palm fronds" style="aspect-ratio: 16 / 9; object-fit: cover;">
+        <figcaption>The evening glass-off. Surfing here is a lifestyle, not a hobby.</figcaption>
+      </figure>
+      <p><strong>Swami's</strong> — The famous one. Point break, long rides, serious surfers. Arrive early or watch from the cliffs above. <strong>Moonlight Beach</strong> — The family beach. Wide, sandy, lifeguards, parking, a park, and concessions. Room for everyone. <strong>Stone Steps</strong> — The locals know it for a reason — and they're not in a hurry to share it. <strong>Beacons</strong> — A Leucadia gem. Accessed by a steep trail down the bluff, known for consistent waves and a low-key crowd that likes it that way.</p>
+
+      <h3>Groceries & Errands</h3>
+      <p><strong>Lazy Acres</strong> for organic and specialty — one of the best natural grocery stores in Southern California. <strong>Seaside Market</strong> in Cardiff is a neighborhood staple with a deli that locals swear by. <strong>Trader Joe's, Sprouts, and Vons</strong> cover everyday essentials without a drive. <strong>Jimbo's</strong> rounds it out for the health-conscious crowd. You won't be driving far for groceries.</p>
+
+      <div class="pull-quote">
+        <p>"The Leucadia Farmers Market on a Sunday morning is the fastest way to understand why people don't leave Encinitas once they get here."</p>
+      </div>
+    </div>
+
+    <!-- Outdoors -->
+    <div class="guide-section">
+      <span class="section-label">Outdoors</span>
+      <h2>Things to do<br/><em>outside.</em></h2>
+
+      <h3>Annie's Canyon Trail</h3>
+      <p>One of the most unique hikes in San Diego County. A narrow slot canyon carved through sandstone that feels nothing like Southern California. Short, fun, and genuinely surprising. Go on a weekday and bring the kids.</p>
+
+      <h3>San Elijo Lagoon Ecological Reserve</h3>
+      <p>Miles of flat trails through one of the largest coastal wetlands in SoCal. Great for morning walks, birding, and the kind of quiet that's hard to find near the beach. Multiple entry points between Cardiff and Encinitas.</p>
+
+      <h3>Self-Realization Fellowship Meditation Gardens</h3>
+      <p>Free, open to the public, and one of the most peaceful spots on the California coast. Cliffside gardens overlooking the ocean in the heart of Encinitas. Worth knowing about whether you meditate or not.</p>
+
+      <h3>San Diego Botanic Garden</h3>
+      <p>37 acres of curated gardens in Encinitas. Great for families, morning walks, and the kind of afternoon that slows everything down. The kids' garden is genuinely excellent.</p>
+
+      <h3>Surf Lessons at Moonlight Beach</h3>
+      <p>Local outfitters offer lessons year-round. A good first activity for anyone new to the area and a weekend ritual for families who live here.</p>
+      <div class="photo-strip">
+        <figure>
+          <img src="assets/moonlight-beach-volleyball.jpg" alt="Volleyball nets and beachgoers on the sand at Moonlight Beach, homes on the hill behind">
+          <figcaption>Saturday at Moonlight Beach</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/san-elijo-lifeguard-tower.jpg" alt="Lifeguard tower 19 at San Elijo State Beach with the sun setting behind it">
+          <figcaption>Tower 19, San Elijo State Beach</figcaption>
+        </figure>
+      </div>
+
+      <h3>San Elijo State Beach Campground</h3>
+      <p>One of the few campgrounds in California where you can fall asleep to the sound of the ocean. Sites sit right on the bluff above the water. Books up fast — especially in summer. Worth reserving early if you have family or friends coming to visit.</p>
+
+      <h3>Coastal Rail Trail</h3>
+      <p>A paved path that runs parallel to the coast through multiple North County beach towns. Perfect for morning bike rides, sunset strolls, or a slow walk with coffee. The kind of amenity you use more than you'd expect.</p>
+
+      <h3>Fox Point Farms</h3>
+      <p>A community-focused agrihood with farm tours by tractor, live music events, farm-to-table experiences, greenhouse yoga, and open space for kids to run. A beautiful blend of nature, food, and community — and genuinely one of the most unique things happening in the area.</p>
+    </div>
+
+    <!-- Logistics -->
+    <div class="guide-section">
+      <span class="section-label">The Practical Stuff</span>
+      <h2>What to know<br/><em>logistically.</em></h2>
+
+      <ul class="guide-list">
+        <li><span class="num">01</span><span><strong>Cost of living.</strong> Above the national average. What you get in return is a lifestyle most places can't offer.</span></li>
+        <li><span class="num">02</span><span><strong>Commute + connectivity.</strong> 25 minutes to downtown San Diego. Easy access to I-5, the Coaster train, and LA when you need it. Most people who live here don't leave often.</span></li>
+        <li><span class="num">03</span><span><strong>Weather.</strong> 70° and sunny most of the year. Locals own more flip flops than coats.</span></li>
+        <li><span class="num">04</span><span><strong>Walkability.</strong> Old Encinitas, Leucadia, and Cardiff are genuinely walkable. Daily life without a car is possible here — rare for Southern California.</span></li>
+        <li><span class="num">05</span><span><strong>Healthcare.</strong> Top-rated hospitals, urgent care, and wellness-forward practitioners within minutes.</span></li>
+        <li><span class="num">06</span><span><strong>Market reality.</strong> Competitive. Homes move fast. But with the right strategy (and agent), you can secure the right spot — even in a tight market.</span></li>
+      </ul>
+    </div>
+
+    <!-- What to expect -->
+    <div class="guide-section">
+      <span class="section-label">The Process</span>
+      <h2>What working with me<br/><em>actually looks like.</em></h2>
+      <p>No mystery, no jargon. Here's the path from first call to keys in hand:</p>
+
+      <ul class="guide-list">
+        <li><span class="num">01</span><span><strong>We talk.</strong> A quick call to understand what you're looking for, what's non-negotiable, and what timeline you're on.</span></li>
+        <li><span class="num">02</span><span><strong>Get pre-approved.</strong> I'll connect you with trusted local lenders who move fast — especially important if you're relocating from out of town.</span></li>
+        <li><span class="num">03</span><span><strong>Tour homes.</strong> In person if you're local, virtual if you're not. Many of my clients have found their home before ever stepping foot inside.</span></li>
+        <li><span class="num">04</span><span><strong>Write the offer.</strong> When we find the one, I'll help you write a clean, competitive offer and negotiate the best terms possible.</span></li>
+        <li><span class="num">05</span><span><strong>Inspections.</strong> We coordinate inspections, walk through every detail together, and negotiate any repairs. No surprises.</span></li>
+        <li><span class="num">06</span><span><strong>Closing.</strong> You get the keys — usually 15–30 days from offer acceptance. Celebration earned.</span></li>
+      </ul>
+    </div>
+
+    <!-- What I tell every buyer -->
+    <div class="guide-section">
+      <span class="section-label">Before You Buy</span>
+      <h2>What I tell every buyer<br/>before their <em>first showing</em></h2>
+
+      <ul class="guide-list">
+        <li><span class="num">01</span><span><strong>The "ocean view" premium is real — and sometimes worth it, sometimes not.</strong> A sliver of blue between two rooflines isn't the same as a 180° panorama. I'll tell you which views hold value and which ones are marketing.</span></li>
+        <li><span class="num">02</span><span><strong>Walk the neighborhood at different times of day.</strong> Morning foot traffic, afternoon sun angle, evening quiet — they're all different, and they all matter.</span></li>
+        <li><span class="num">03</span><span><strong>Ask about the coastal zone.</strong> Properties west of the 101 often have ADU restrictions, view protection rules, and permitting hurdles that don't apply east of it. Always worth checking before you fall in love with a remodel plan.</span></li>
+        <li><span class="num">04</span><span><strong>Drive the commute at commute time.</strong> Not Google Maps — actually drive it. The 5 at 8am on a Tuesday is a different experience than a Saturday afternoon.</span></li>
+        <li><span class="num">05</span><span><strong>Don't skip the inspection.</strong> Coastal homes have specific wear patterns — salt air, moisture intrusion, aging roofs. A good inspector pays for themselves ten times over.</span></li>
+      </ul>
+    </div>
+
+    <!-- Dreamy closer -->
+    <div class="photo-breaker">
+      <img src="assets/swamis-beach.jpg" alt="Golden-hour light on the bluffs at Swami's Beach in Encinitas, waves washing in">
+      <div class="photo-breaker__text">
+        <p>"Imagine it's a random Tuesday in February. This is your evening view."</p>
+        <span>Sunset at Swami's Beach &middot; right on the 101</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="guide-cta">
+      <h2>Ready to find your<br/><em>street in Encinitas?</em></h2>
+      <p>I'm your Realtor here — fourteen years, $240M+ in San Diego closings. Let's talk about what you're looking for.</p>
+      <div class="guide-cta__actions">
+        <div class="guide-cta__qr">
+          <canvas id="cta-qr" width="160" height="160"></canvas>
+          <span>Scan to book a 15-min call</span>
+        </div>
+        <div class="guide-cta__lines">
+          <a class="guide-cta__btn" href="https://calendly.com/coasthomes/discoverycall" target="_blank" rel="noopener">Book a 15-min call →</a>
+          <div class="guide-cta__contact">
+            <div><span>Calendar</span><a href="https://calendly.com/coasthomes/discoverycall">calendly.com/coasthomes/discoverycall</a></div>
+            <div><span>Email</span><a href="mailto:Aja@coasthomesbyaja.com">Aja@coasthomesbyaja.com</a></div>
+            <div><span>Text or call</span><a href="tel:+13237919587">(323) 791-9587</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('gate-form');
+  const btn = document.getElementById('gate-btn');
+  const errorEl = document.getElementById('gate-error');
+  const gate = document.getElementById('gate');
+  const guide = document.getElementById('guide');
+
+  // Draft preview bypass: open with ?preview=1 (or #preview) to skip the gate.
+  if (/[?&]preview\b/.test(location.search) || location.hash === '#preview') {
+    gate.style.display = 'none';
+    guide.classList.add('visible');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    errorEl.style.display = 'none';
+
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      guide: 'Encinitas Local\'s Guide',
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/xdaywppb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        gate.style.display = 'none';
+        guide.classList.add('visible');
+        window.scrollTo(0, 0);
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      errorEl.textContent = 'Something went wrong — please try again or email Aja@coasthomesbyaja.com';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Get the guide →';
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<script>
+  // Render the CTA QR code pointing to the booking calendar.
+  function renderCtaQr() {
+    const canvas = document.getElementById('cta-qr');
+    if (!canvas || typeof qrcode !== 'function') return;
+    const url = 'https://calendly.com/coasthomes/discoverycall';
+    const qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    const size = canvas.width;
+    const count = qr.getModuleCount();
+    const cell = size / count;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = '#0a1520';
+    for (let r = 0; r < count; r++) {
+      for (let c = 0; c < count; c++) {
+        if (qr.isDark(r, c)) {
+          ctx.fillRect(Math.floor(c * cell), Math.floor(r * cell), Math.ceil(cell), Math.ceil(cell));
+        }
+      }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderCtaQr);
+  } else {
+    renderCtaQr();
+  }
+  // Also re-render on print (in case canvas was cleared)
+  window.addEventListener('beforeprint', renderCtaQr);
+</script>
+</body>
+</html>
